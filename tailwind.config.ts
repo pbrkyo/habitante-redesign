@@ -28,8 +28,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-lora)", "serif"],
-        sans: ["var(--font-poppins)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(44px, 6vw, 70px)", { lineHeight: "1.05" }],

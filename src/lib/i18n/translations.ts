@@ -15,7 +15,7 @@ export const translations: Translations = {
     "hero.title.line2": "quien ",
     "hero.title.em": "la habita.",
     "hero.subtitle":
-      "Diseñamos desde la experiencia humana, no desde la forma. Cada proyecto es un reflejo de quien lo vivirá.",
+      "Una colección de arquitectura para quien la habita, diseñada con visión global y alma local.",
     "hero.scroll": "Explorar",
 
     // Statement Bar
@@ -105,7 +105,7 @@ export const translations: Translations = {
     "cta.note": "Sin compromiso · Brief emocional inicial",
 
     // Footer
-    "ft.tagline": "Arquitectura para\nquien la habita.",
+    "ft.tagline": "Visión global,\nalma local.",
     "ft.nav": "Navegar",
     "ft.projects": "Proyectos",
     "ft.contact": "Contacto",
@@ -164,7 +164,7 @@ export const translations: Translations = {
     "hero.title.line2": "those who ",
     "hero.title.em": "inhabit it.",
     "hero.subtitle":
-      "We design from human experience, not from form. Every project is a reflection of who will live in it.",
+      "A collection of architecture for the inhabitant, designed with global vision and local soul.",
     "hero.scroll": "Explore",
 
     // Statement Bar
@@ -254,7 +254,7 @@ export const translations: Translations = {
     "cta.note": "No commitment · Initial emotional brief",
 
     // Footer
-    "ft.tagline": "Architecture for\nthose who inhabit it.",
+    "ft.tagline": "Global vision,\nlocal soul.",
     "ft.nav": "Navigate",
     "ft.projects": "Projects",
     "ft.contact": "Contact",

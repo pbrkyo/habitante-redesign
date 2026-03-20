@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
-import { Lora, Poppins } from "next/font/google";
+import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import CustomCursor from "@/components/layout/CustomCursor";
 import PageTransition from "@/components/layout/PageTransition";
 import "./globals.css";
 
-const lora = Lora({
+const dmSerifDisplay = DM_Serif_Display({
   subsets: ["latin"],
-  variable: "--font-lora",
+  variable: "--font-serif",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
   style: ["normal", "italic"],
 });
 
-const poppins = Poppins({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-sans",
   display: "swap",
-  weight: ["300", "400", "500", "700"],
+  weight: ["300", "400", "500"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://habitante.co";
@@ -126,7 +125,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${lora.variable} ${poppins.variable}`}>
+    <html lang="es" className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -138,7 +137,6 @@ export default function RootLayout({
       <body className="font-sans">
         <LanguageProvider>
           <SmoothScroll />
-          <CustomCursor />
           <Navbar />
           <PageTransition>
             <main>{children}</main>

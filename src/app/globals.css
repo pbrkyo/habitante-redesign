@@ -23,21 +23,11 @@ html {
 }
 
 body {
-  font-family: var(--font-poppins), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   background-color: var(--white);
   color: var(--carbon);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Hide default cursor on desktop when custom cursor is active */
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a, button, [role="button"], [data-cursor-hover] {
-    cursor: none;
-  }
 }
 
 /* Smooth image rendering */
@@ -47,7 +37,7 @@ img {
 
 @layer base {
   h1, h2, h3, h4 {
-    font-family: var(--font-lora), serif;
+    font-family: var(--font-serif), serif;
     font-weight: 400;
   }
 }
