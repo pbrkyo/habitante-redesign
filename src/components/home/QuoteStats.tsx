@@ -42,9 +42,9 @@ export default function QuoteStats() {
             >
               {t(stat.nKey)}
             </div>
-            <div className="text-[11px] text-ink/60 leading-[1.5]">
+            <div className="text-sm text-ink/80 leading-[1.5]">
               {t(stat.labelKey)}
-              <small className="block text-[9px] opacity-70 mt-0.5 tracking-[0.04em]">
+              <small className="block text-[11px] text-ink/60 mt-1 tracking-[0.04em]">
                 {t(stat.subKey)}
               </small>
             </div>

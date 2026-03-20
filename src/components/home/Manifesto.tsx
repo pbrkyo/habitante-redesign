@@ -40,14 +40,14 @@ export default function Manifesto() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.15 }}
           >
-            <span className="text-[9px] text-az-brand tracking-[0.1em] pt-0.5">
+            <span className="text-[11px] text-az-brand tracking-[0.1em] pt-0.5">
               {p.n}
             </span>
             <div>
-              <div className="text-xs font-medium text-carbon mb-[5px]">
+              <div className="text-sm font-medium text-carbon mb-2">
                 {t(p.titleKey)}
               </div>
-              <div className="text-[11px] text-sand leading-[1.75]">
+              <div className="text-sm text-ink/70 leading-[1.8]">
                 {t(p.descKey)}
               </div>
             </div>

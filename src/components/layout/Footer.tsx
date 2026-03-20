@@ -13,11 +13,11 @@ export default function Footer() {
         <div>
           <div className="font-sans text-xs font-medium tracking-[0.22em] text-az-brand uppercase">
             HABITANTE
-            <span className="block text-[8px] tracking-[0.15em] text-[#4B73C4] font-light mt-[3px]">
+            <span className="block text-[10px] tracking-[0.15em] text-[#4B73C4] font-light mt-[3px]">
               arquitectura
             </span>
           </div>
-          <p className="text-xs text-sand mt-4 italic leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-ink/60 mt-4 italic leading-relaxed whitespace-pre-line">
             {t("ft.tagline")}
           </p>
         </div>
@@ -25,28 +25,28 @@ export default function Footer() {
         {/* Navigate */}
         <div>
           <h4 className="label-upper text-sand-light mb-4">{t("ft.nav")}</h4>
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-3">
             <Link
               href="/proyectos"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("nav.projects")}
             </Link>
             <Link
               href="/forma-de-disenar"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("nav.approach")}
             </Link>
             <Link
               href="/la-firma"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("nav.firm")}
             </Link>
             <Link
               href="/conversacion"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("ft.conversation")}
             </Link>
@@ -58,22 +58,22 @@ export default function Footer() {
           <h4 className="label-upper text-sand-light mb-4">
             {t("ft.projects")}
           </h4>
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-3">
             <Link
               href="/proyectos?cat=residential"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("ft.residential")}
             </Link>
             <Link
               href="/proyectos?cat=commercial"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("ft.commercial")}
             </Link>
             <Link
               href="/proyectos?cat=urban"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               {t("ft.international")}
             </Link>
@@ -85,10 +85,10 @@ export default function Footer() {
           <h4 className="label-upper text-sand-light mb-4">
             {t("ft.contact")}
           </h4>
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-3">
             <a
               href="mailto:info@habitante.co"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               info@habitante.co
             </a>
@@ -96,7 +96,7 @@ export default function Footer() {
               href="https://habitante.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               habitante.co
             </a>
@@ -104,7 +104,7 @@ export default function Footer() {
               href="https://www.instagram.com/habitantearquitectura/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-sand hover:text-carbon transition-colors"
+              className="text-sm text-ink/65 hover:text-carbon transition-colors"
             >
               Instagram
             </a>
@@ -112,14 +112,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center pt-6 text-[9px] text-sand-light tracking-[0.05em]">
+      <div className="flex justify-between items-center pt-6 text-xs text-sand tracking-[0.05em]">
         <span>{t("ft.copyright")}</span>
         <div className="flex gap-3.5">
-          <span className="text-[9px] text-az-brand/45 tracking-nav">CR</span>
+          <span className="text-xs text-az-brand/60 tracking-nav">CR</span>
           <span>·</span>
-          <span className="text-[9px] text-az-brand/45 tracking-nav">CA</span>
+          <span className="text-xs text-az-brand/60 tracking-nav">CA</span>
           <span>·</span>
-          <span className="text-[9px] text-az-brand/45 tracking-nav">NI</span>
+          <span className="text-xs text-az-brand/60 tracking-nav">NI</span>
         </div>
       </div>
     </footer>

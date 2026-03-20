@@ -49,13 +49,13 @@ export default function ProjectCard({ project, lang, index }: ProjectCardProps) 
         </div>
 
         <div className="pt-4 pb-6">
-          <div className="text-[8px] tracking-[0.18em] uppercase text-sand-light mb-1">
+          <div className="text-[11px] tracking-[0.14em] uppercase text-sand mb-1.5">
             {categoryLabels[project.category]?.[lang]} · {project.city}
           </div>
           <h3 className="font-serif text-lg text-carbon group-hover:text-az-brand transition-colors duration-200">
             {project.title[lang]}
           </h3>
-          <p className="text-[11px] text-sand mt-1.5 leading-[1.7] line-clamp-2">
+          <p className="text-sm text-ink/65 mt-2 leading-[1.75] line-clamp-2">
             {project.description[lang]}
           </p>
         </div>

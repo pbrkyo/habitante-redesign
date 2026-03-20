@@ -59,13 +59,13 @@ export default function ProjectDetailPage() {
           >
             <Link
               href="/proyectos"
-              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-nav text-linen/60 hover:text-linen transition-colors mb-6"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-nav text-linen/80 hover:text-linen transition-colors mb-6"
             >
               <ArrowLeft size={14} />
               {t("nav.projects")}
             </Link>
 
-            <div className="text-[9px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2">
+            <div className="text-[11px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2">
               {categoryLabels[project.category]?.[lang]} · {project.country}
             </div>
             <h1 className="font-serif text-display-xl text-linen">
@@ -83,7 +83,7 @@ export default function ProjectDetailPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm text-ink leading-[1.9] font-light">
+          <p className="text-base text-ink/80 leading-[1.9] font-light">
             {project.description[lang]}
           </p>
         </motion.div>
@@ -98,10 +98,10 @@ export default function ProjectDetailPage() {
           <div className="flex items-center gap-3 py-3 border-b border-bone/50">
             <MapPin size={14} className="text-az-brand" />
             <div>
-              <div className="text-[9px] uppercase tracking-label text-sand-light">
+              <div className="text-[11px] uppercase tracking-label text-sand">
                 {lang === "es" ? "Ubicación" : "Location"}
               </div>
-              <div className="text-xs text-carbon">
+              <div className="text-sm text-carbon">
                 {project.city}, {project.country}
               </div>
             </div>
@@ -109,19 +109,19 @@ export default function ProjectDetailPage() {
           <div className="flex items-center gap-3 py-3 border-b border-bone/50">
             <Ruler size={14} className="text-az-brand" />
             <div>
-              <div className="text-[9px] uppercase tracking-label text-sand-light">
+              <div className="text-[11px] uppercase tracking-label text-sand">
                 {lang === "es" ? "Área" : "Area"}
               </div>
-              <div className="text-xs text-carbon">{project.area}</div>
+              <div className="text-sm text-carbon">{project.area}</div>
             </div>
           </div>
           <div className="flex items-center gap-3 py-3 border-b border-bone/50">
             <Calendar size={14} className="text-az-brand" />
             <div>
-              <div className="text-[9px] uppercase tracking-label text-sand-light">
+              <div className="text-[11px] uppercase tracking-label text-sand">
                 {lang === "es" ? "Año" : "Year"}
               </div>
-              <div className="text-xs text-carbon">{project.year}</div>
+              <div className="text-sm text-carbon">{project.year}</div>
             </div>
           </div>
         </motion.div>

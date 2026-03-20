@@ -39,7 +39,7 @@ export default function ProjectTeaser() {
         <h2 className="font-serif text-display-md text-carbon leading-[1.35] mb-4">
           {t("teaser.title")}
         </h2>
-        <p className="text-xs text-sand leading-[1.9] mb-6">
+        <p className="text-sm text-ink/70 leading-[1.9] mb-6">
           {t("teaser.desc")}
         </p>
         <Link

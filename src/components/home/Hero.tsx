@@ -44,7 +44,7 @@ export default function Hero() {
           <em className="italic text-az-brand">{t("hero.title.em")}</em>
         </h1>
 
-        <p className="text-sm text-sand leading-[1.85] max-w-[400px] font-light">
+        <p className="text-sm text-ink/75 leading-[1.85] max-w-[400px] font-light">
           {t("hero.subtitle")}
         </p>
       </motion.div>

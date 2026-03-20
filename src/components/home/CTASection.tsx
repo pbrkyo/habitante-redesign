@@ -38,7 +38,7 @@ export default function CTASection() {
         <Link href="/conversacion" className="btn-primary">
           {t("cta.btn")}
         </Link>
-        <span className="text-[10px] text-sand-light">{t("cta.note")}</span>
+        <span className="text-xs text-sand">{t("cta.note")}</span>
       </motion.div>
     </section>
   );

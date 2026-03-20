@@ -80,7 +80,7 @@ export default function LaFirmaPage() {
           <h1 className="font-serif text-display-lg text-carbon mb-6">
             {t("firm.subtitle")}
           </h1>
-          <p className="text-sm text-sand font-light leading-[1.9]">
+          <p className="text-base text-ink/70 font-light leading-[1.9]">
             {lang === "es"
               ? "Habitante es un estudio de arquitectura boutique fundado con una convicción: los espacios que habitamos nos transforman. Desde Guanacaste, Costa Rica, diseñamos arquitectura residencial, comercial y urbana que parte de la experiencia humana — no de la forma."
               : "Habitante is a boutique architecture studio founded with a conviction: the spaces we inhabit transform us. From Guanacaste, Costa Rica, we design residential, commercial, and urban architecture that starts from human experience — not from form."}
@@ -127,7 +127,7 @@ export default function LaFirmaPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-xs text-sand leading-[1.9]">
+            <p className="text-sm text-ink/70 leading-[1.9]">
               {lang === "es"
                 ? "Nuestra visión es crear arquitectura que trascienda lo estético. Espacios que respondan a la forma en que las personas realmente viven: sus rutinas, sus emociones, su relación con la luz, el sonido y la naturaleza. Creemos que la arquitectura tiene la responsabilidad de mejorar la vida cotidiana."
                 : "Our vision is to create architecture that transcends aesthetics. Spaces that respond to how people actually live: their routines, emotions, their relationship with light, sound, and nature. We believe architecture has the responsibility to improve everyday life."}
@@ -158,7 +158,7 @@ export default function LaFirmaPage() {
               <h3 className="font-serif text-lg text-carbon mb-3">
                 {lang === "es" ? v.titleEs : v.titleEn}
               </h3>
-              <p className="text-[11px] text-sand leading-[1.85]">
+              <p className="text-sm text-ink/70 leading-[1.85]">
                 {lang === "es" ? v.descEs : v.descEn}
               </p>
             </motion.div>
@@ -168,7 +168,7 @@ export default function LaFirmaPage() {
 
       {/* International presence */}
       <section className="bg-az-light section-pad py-20 border-b border-az-mid/50">
-        <div className="label-upper text-az-brand/50 mb-3">
+        <div className="label-upper text-az-brand/70 mb-3">
           {lang === "es" ? "Presencia internacional" : "International presence"}
         </div>
         <h2 className="font-serif text-display-md text-carbon mb-14">
@@ -187,17 +187,17 @@ export default function LaFirmaPage() {
             >
               <div className="flex items-center gap-2 mb-4">
                 <MapPin size={14} className="text-az-brand" />
-                <span className="text-[9px] uppercase tracking-label text-az-brand">
+                <span className="text-[11px] uppercase tracking-label text-az-brand">
                   {office.code}
                 </span>
               </div>
               <h3 className="font-serif text-lg text-carbon mb-1">
                 {office.country}
               </h3>
-              <div className="text-[10px] text-sand-light mb-4">
+              <div className="text-xs text-sand mb-4">
                 {office.city}
               </div>
-              <p className="text-[11px] text-sand leading-[1.8]">
+              <p className="text-sm text-ink/70 leading-[1.8]">
                 {lang === "es" ? office.descEs : office.descEn}
               </p>
             </motion.div>

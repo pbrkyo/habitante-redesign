@@ -39,11 +39,11 @@ body {
 
 @layer components {
   .label-upper {
-    @apply text-[9px] uppercase tracking-label;
+    @apply text-[11px] uppercase tracking-label;
   }
 
   .nav-link {
-    @apply text-[10px] uppercase tracking-nav text-ink/45 transition-colors duration-200 hover:text-carbon;
+    @apply text-[11px] uppercase tracking-nav text-ink/70 transition-colors duration-200 hover:text-carbon;
   }
 
   .section-pad {
@@ -55,11 +55,11 @@ body {
   }
 
   .btn-primary {
-    @apply text-[10px] uppercase tracking-[0.14em] text-white bg-az-brand border-none py-[17px] px-11 rounded-sm cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-az-deep;
+    @apply text-xs uppercase tracking-[0.14em] text-white bg-az-brand border-none py-[17px] px-11 rounded-sm cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-az-deep;
   }
 
   .btn-outline {
-    @apply text-[9px] uppercase tracking-[0.1em] text-az-brand border border-az-brand/40 py-[7px] px-[18px] rounded-sm cursor-pointer transition-all duration-200 hover:bg-az-light;
+    @apply text-[11px] uppercase tracking-[0.1em] text-az-brand border border-az-brand/40 py-[7px] px-[18px] rounded-sm cursor-pointer transition-all duration-200 hover:bg-az-light;
   }
 }
 

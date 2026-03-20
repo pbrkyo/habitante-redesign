@@ -30,7 +30,7 @@ export default function ProjectsPage() {
           <h1 className="font-serif text-display-lg text-carbon mb-8">
             {t("projects.title")}
           </h1>
-          <p className="text-sm text-sand font-light max-w-md mb-10">
+          <p className="text-sm text-ink/70 font-light max-w-md mb-10">
             {t("projects.subtitle")}
           </p>
           <ProjectFilter active={filter} onChange={setFilter} />

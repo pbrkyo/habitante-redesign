@@ -100,7 +100,7 @@ export default function FormaDeDisenarPage() {
           <h1 className="font-serif text-display-lg text-carbon mb-6">
             {t("approach.subtitle")}
           </h1>
-          <p className="text-sm text-sand font-light leading-[1.9]">
+          <p className="text-base text-ink/70 font-light leading-[1.9]">
             {lang === "es"
               ? "En Habitante no ofrecemos servicios. Practicamos arquitectura. Cada proyecto es una obra de autor — diseñada desde la vida de quien la habitará, con la precisión de quien entiende que los espacios afectan profundamente a las personas."
               : "At Habitante we don't offer services. We practice architecture. Every project is an authored work — designed from the life of those who will inhabit it, with the precision of those who understand that spaces profoundly affect people."}
@@ -133,7 +133,7 @@ export default function FormaDeDisenarPage() {
               <h3 className="font-serif text-xl text-carbon mb-3">
                 {lang === "es" ? p.titleEs : p.titleEn}
               </h3>
-              <p className="text-xs text-sand leading-[1.85]">
+              <p className="text-sm text-ink/70 leading-[1.85]">
                 {lang === "es" ? p.descEs : p.descEn}
               </p>
             </motion.div>
@@ -168,7 +168,7 @@ export default function FormaDeDisenarPage() {
               <h3 className="font-serif text-lg text-carbon mb-2">
                 {lang === "es" ? step.titleEs : step.titleEn}
               </h3>
-              <p className="text-[11px] text-sand leading-[1.8]">
+              <p className="text-sm text-ink/70 leading-[1.8]">
                 {lang === "es" ? step.descEs : step.descEn}
               </p>
             </motion.div>
@@ -186,7 +186,7 @@ export default function FormaDeDisenarPage() {
           }}
         />
         <div className="bg-az-brand px-14 py-16 max-md:px-6 max-md:py-12 flex flex-col justify-center">
-          <div className="label-upper text-az-mid/65 mb-3.5">
+          <div className="label-upper text-az-mid mb-3.5">
             {t("nr.label")}
           </div>
           <h2 className="font-serif text-display-md text-linen leading-[1.32] mb-5">
@@ -196,7 +196,7 @@ export default function FormaDeDisenarPage() {
             <br />
             <em className="italic text-[#A8C0E8]">{t("nr.title.em")}</em>
           </h2>
-          <p className="text-[13px] text-az-light/60 leading-[1.85] font-light">
+          <p className="text-sm text-az-light/85 leading-[1.85] font-light">
             {t("nr.body")}
           </p>
         </div>

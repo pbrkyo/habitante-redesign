@@ -27,7 +27,7 @@ export default function NeuroSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="label-upper text-az-mid/65 mb-3.5">
+          <div className="label-upper text-az-mid mb-3.5">
             {t("nr.label")}
           </div>
           <h2 className="font-serif text-display-md text-linen leading-[1.32] mb-[18px]">
@@ -37,7 +37,7 @@ export default function NeuroSection() {
             <br />
             <em className="italic text-[#A8C0E8]">{t("nr.title.em")}</em>
           </h2>
-          <p className="text-[13px] text-az-light/60 leading-[1.85] font-light mb-7">
+          <p className="text-sm text-az-light/85 leading-[1.85] font-light mb-7">
             {t("nr.body")}
           </p>
 
@@ -52,7 +52,7 @@ export default function NeuroSection() {
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
               >
                 <div className="w-1 h-1 rounded-full bg-[#A8C0E8] mt-1.5 flex-shrink-0" />
-                <span className="text-xs text-az-light/55 leading-[1.6]">
+                <span className="text-sm text-az-light/80 leading-[1.7]">
                   {t(key)}
                 </span>
               </motion.div>

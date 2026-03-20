@@ -24,7 +24,7 @@ export default function ConversacionPage() {
             <h1 className="font-serif text-display-lg text-carbon mb-6">
               {t("contact.subtitle")}
             </h1>
-            <p className="text-sm text-sand font-light leading-[1.9] mb-12">
+            <p className="text-sm text-ink/70 font-light leading-[1.9] mb-12">
               {lang === "es"
                 ? "Este no es un formulario genérico. Es el inicio de una conversación. Cuéntanos cómo imaginas tu espacio, qué emociones quieres que evoque, cómo quieres vivir en él. Nosotros escuchamos."
                 : "This is not a generic form. It's the beginning of a conversation. Tell us how you imagine your space, what emotions you want it to evoke, how you want to live in it. We listen."}
@@ -35,7 +35,7 @@ export default function ConversacionPage() {
                 <Mail size={16} className="text-az-brand" />
                 <a
                   href="mailto:info@habitante.co"
-                  className="text-xs text-sand hover:text-carbon transition-colors"
+                  className="text-sm text-ink/70 hover:text-carbon transition-colors"
                 >
                   info@habitante.co
                 </a>
@@ -44,14 +44,14 @@ export default function ConversacionPage() {
                 <Phone size={16} className="text-az-brand" />
                 <a
                   href="tel:+50683117094"
-                  className="text-xs text-sand hover:text-carbon transition-colors"
+                  className="text-sm text-ink/70 hover:text-carbon transition-colors"
                 >
                   +506 8311 7094
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={16} className="text-az-brand" />
-                <span className="text-xs text-sand">
+                <span className="text-sm text-ink/70">
                   Tamarindo, Guanacaste, Costa Rica
                 </span>
               </div>

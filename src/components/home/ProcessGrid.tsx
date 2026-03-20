@@ -35,10 +35,10 @@ export default function ProcessGrid() {
             <div className="label-upper text-az-brand mb-[18px]">
               {t(step.nKey)}
             </div>
-            <div className="font-serif text-[17px] text-carbon mb-[9px] leading-[1.3]">
+            <div className="font-serif text-[18px] text-carbon mb-3 leading-[1.35]">
               {t(step.titleKey)}
             </div>
-            <div className="text-[11px] text-sand leading-[1.75]">
+            <div className="text-sm text-ink/70 leading-[1.8]">
               {t(step.descKey)}
             </div>
           </motion.div>
