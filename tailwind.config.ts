@@ -9,8 +9,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        carbon: "#1E1D1A",
+        ink: "#3A3830",
+        sand: {
+          DEFAULT: "#9E9690",
+          light: "#C8C3BC",
+        },
+        bone: "#E8E4DE",
+        linen: "#F0EDE7",
+        cream: "#F7F5F1",
+        white: "#FDFCFA",
+        az: {
+          deep: "#0C3270",
+          brand: "#1B52A6",
+          electric: "#2B3FD4",
+          light: "#E8EEF8",
+          mid: "#D0DCEF",
+        },
+      },
+      fontFamily: {
+        serif: ["var(--font-lora)", "serif"],
+        sans: ["var(--font-poppins)", "sans-serif"],
+      },
+      fontSize: {
+        "display-xl": ["clamp(44px, 6vw, 70px)", { lineHeight: "1.05" }],
+        "display-lg": ["clamp(28px, 4vw, 44px)", { lineHeight: "1.32" }],
+        "display-md": ["clamp(22px, 3vw, 34px)", { lineHeight: "1.35" }],
+        "display-sm": ["clamp(18px, 2.5vw, 24px)", { lineHeight: "1.3" }],
+      },
+      letterSpacing: {
+        label: "0.22em",
+        nav: "0.12em",
+        wide: "0.25em",
+      },
+      borderWidth: {
+        thin: "0.5px",
       },
     },
   },
