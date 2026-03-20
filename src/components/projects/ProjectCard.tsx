@@ -8,10 +8,10 @@ import type { Project, Language } from "@/types";
 interface ProjectCardProps {
   project: Project;
   lang: Language;
-  index: number;
+  index?: number;
 }
 
-export default function ProjectCard({ project, lang, index }: ProjectCardProps) {
+export default function ProjectCard({ project, lang }: ProjectCardProps) {
   const categoryLabels: Record<string, Record<Language, string>> = {
     residential: { es: "Residencial", en: "Residential" },
     commercial: { es: "Comercial", en: "Commercial" },
@@ -20,10 +20,8 @@ export default function ProjectCard({ project, lang, index }: ProjectCardProps) 
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
       <Link
         href={`/proyectos/${project.slug}`}
@@ -39,7 +37,7 @@ export default function ProjectCard({ project, lang, index }: ProjectCardProps) 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <div className="text-[8px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
+            <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
               {categoryLabels[project.category]?.[lang]} · {project.country}
             </div>
             <div className="font-serif text-base text-linen">

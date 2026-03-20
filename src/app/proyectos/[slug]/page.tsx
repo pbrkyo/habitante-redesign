@@ -9,6 +9,33 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { getProjectBySlug, projects } from "@/lib/data/projects";
 import ProjectGallery from "@/components/projects/ProjectGallery";
 
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const staggerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease },
+  },
+};
+
+const relatedCardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease },
+  },
+};
+
 export default function ProjectDetailPage() {
   const params = useParams();
   const { lang, t } = useLanguage();
@@ -40,43 +67,59 @@ export default function ProjectDetailPage() {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero with Ken Burns effect */}
       <section className="relative h-[70vh] min-h-[400px] overflow-hidden">
-        <Image
-          src={project.heroImage}
-          alt={project.title[lang]}
-          fill
-          className="object-cover"
-          priority
-        />
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Image
+            src={project.heroImage}
+            alt={project.title[lang]}
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 to-carbon/10" />
 
         <div className="absolute bottom-0 left-0 right-0 section-pad pb-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            variants={staggerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <Link
-              href="/proyectos"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-nav text-linen/80 hover:text-linen transition-colors mb-6"
-            >
-              <ArrowLeft size={14} />
-              {t("nav.projects")}
-            </Link>
+            <motion.div variants={fadeUpVariants}>
+              <Link
+                href="/proyectos"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-nav text-linen/80 hover:text-linen transition-colors mb-6"
+              >
+                <ArrowLeft size={14} />
+                {t("nav.projects")}
+              </Link>
+            </motion.div>
 
-            <div className="text-[11px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2">
+            <motion.div
+              variants={fadeUpVariants}
+              className="text-[11px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2"
+            >
               {categoryLabels[project.category]?.[lang]} · {project.country}
-            </div>
-            <h1 className="font-serif text-display-xl text-linen">
+            </motion.div>
+
+            <motion.h1
+              variants={fadeUpVariants}
+              className="font-serif text-display-xl text-linen"
+            >
               {project.title[lang]}
-            </h1>
+            </motion.h1>
           </motion.div>
         </div>
       </section>
 
       {/* Meta + Description */}
-      <section className="bg-white section-pad py-16 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-16">
+      <section className="bg-white section-pad py-16 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-16 max-md:gap-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -129,49 +172,78 @@ export default function ProjectDetailPage() {
 
       {/* Gallery */}
       {project.images.length > 1 && (
-        <section className="bg-linen section-pad py-16 border-t border-bone/50">
-          <div className="label-upper text-sand-light mb-6">
+        <motion.section
+          className="bg-linen section-pad py-16 border-t border-bone/50"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            className="label-upper text-sand-light mb-6"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             {lang === "es" ? "Galería" : "Gallery"}
-          </div>
+          </motion.div>
           <ProjectGallery
             images={project.images}
             title={project.title[lang]}
           />
-        </section>
+        </motion.section>
       )}
 
       {/* Related projects */}
       {related.length > 0 && (
         <section className="bg-white section-pad py-16 border-t border-bone/50">
-          <div className="label-upper text-sand-light mb-8">
+          <motion.div
+            className="label-upper text-sand-light mb-8"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             {lang === "es" ? "Más proyectos" : "More projects"}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            variants={staggerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
             {related.map((rp) => (
-              <Link
-                key={rp.slug}
-                href={`/proyectos/${rp.slug}`}
-                className="group relative overflow-hidden"
-              >
-                <Image
-                  src={rp.heroImage}
-                  alt={rp.title[lang]}
-                  width={600}
-                  height={350}
-                  className="w-full h-[280px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="text-[8px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
-                    {categoryLabels[rp.category]?.[lang]} · {rp.country}
+              <motion.div key={rp.slug} variants={relatedCardVariants}>
+                <Link
+                  href={`/proyectos/${rp.slug}`}
+                  className="group relative overflow-hidden block"
+                >
+                  <Image
+                    src={rp.heroImage}
+                    alt={rp.title[lang]}
+                    width={600}
+                    height={350}
+                    className="w-full h-[280px] max-md:h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 group-hover:from-carbon/82 transition-all duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
+                      {categoryLabels[rp.category]?.[lang]} · {rp.country}
+                    </div>
+                    <div className="font-serif text-lg text-linen">
+                      {rp.title[lang]}
+                    </div>
                   </div>
-                  <div className="font-serif text-lg text-linen">
-                    {rp.title[lang]}
+                  <div className="absolute right-5 bottom-5 text-base text-[#8AABDC]/70 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                    →
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
     </>

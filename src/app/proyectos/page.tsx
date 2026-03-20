@@ -1,11 +1,32 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { projects } from "@/lib/data/projects";
 import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectFilter from "@/components/projects/ProjectFilter";
+
+const gridVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55 },
+  },
+  exit: {
+    opacity: 0,
+    y: -12,
+    transition: { duration: 0.25 },
+  },
+};
 
 export default function ProjectsPage() {
   const { lang, t } = useLanguage();
@@ -37,18 +58,28 @@ export default function ProjectsPage() {
         </motion.div>
       </section>
 
-      {/* Grid */}
+      {/* Grid with animated filter transitions */}
       <section className="bg-white section-pad py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
-          {filtered.map((project, i) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              lang={lang}
-              index={i}
-            />
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={filter ?? "all"}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2"
+            variants={gridVariants}
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+          >
+            {filtered.map((project, i) => (
+              <motion.div key={project.slug} variants={cardVariants}>
+                <ProjectCard
+                  project={project}
+                  lang={lang}
+                  index={i}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </section>
     </>
   );

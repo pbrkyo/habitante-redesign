@@ -3,6 +3,24 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease },
+  },
+};
+
 export default function StatementBar() {
   const { t } = useLanguage();
 
@@ -16,13 +34,13 @@ export default function StatementBar() {
   return (
     <motion.div
       className="bg-az-light section-pad py-5 flex max-md:flex-col items-center gap-12 max-md:gap-4 border-b border-az-mid/50"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-20px" }}
     >
       {items.map((item, i) => (
-        <div key={i} className="flex items-center gap-3 flex-1 max-md:w-full">
+        <motion.div key={i} className="flex items-center gap-3 flex-1 max-md:w-full" variants={itemVariants}>
           {i > 0 && (
             <div className="w-px h-6 bg-az-mid flex-shrink-0 max-md:hidden" />
           )}
@@ -30,7 +48,7 @@ export default function StatementBar() {
           <span className="text-[11px] text-az-brand/65 tracking-[0.04em]">
             {item}
           </span>
-        </div>
+        </motion.div>
       ))}
     </motion.div>
   );

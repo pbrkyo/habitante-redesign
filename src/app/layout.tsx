@@ -3,6 +3,9 @@ import { Lora, Poppins } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/layout/SmoothScroll";
+import CustomCursor from "@/components/layout/CustomCursor";
+import PageTransition from "@/components/layout/PageTransition";
 import "./globals.css";
 
 const lora = Lora({
@@ -134,8 +137,12 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <LanguageProvider>
+          <SmoothScroll />
+          <CustomCursor />
           <Navbar />
-          <main>{children}</main>
+          <PageTransition>
+            <main>{children}</main>
+          </PageTransition>
           <Footer />
         </LanguageProvider>
       </body>

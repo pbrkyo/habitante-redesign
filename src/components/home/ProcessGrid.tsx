@@ -10,29 +10,71 @@ const steps = [
   { nKey: "proc.4.n", titleKey: "proc.4.title", descKey: "proc.4.desc" },
 ];
 
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
+};
+
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease },
+  },
+};
+
 export default function ProcessGrid() {
   const { t } = useLanguage();
 
   return (
     <section className="bg-linen section-pad py-20 max-md:py-14 border-t border-bone/50 border-b border-bone/50">
-      <div className="label-upper text-sand-light mb-3">
-        {t("proc.label")}
-      </div>
-      <h2 className="font-serif text-display-md text-carbon mb-12">
-        {t("proc.title")}
-      </h2>
+      <motion.div
+        variants={headerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+      >
+        <div className="label-upper text-sand-light mb-3">
+          {t("proc.label")}
+        </div>
+        <h2 className="font-serif text-display-md text-carbon mb-12">
+          {t("proc.title")}
+        </h2>
+      </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-bone/50">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-bone/50"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+      >
         {steps.map((step, i) => (
           <motion.div
             key={i}
-            className="p-7 max-lg:p-5 border-r border-bone/50 last:border-r-0 max-lg:border-b max-lg:last:border-b-0 transition-colors duration-200 hover:bg-white/70"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className={`p-7 max-lg:p-5 transition-colors duration-300 hover:bg-white/80 group
+              border-bone/50
+              lg:border-r lg:last:border-r-0
+              max-lg:border-b max-lg:last:border-b-0
+              sm:max-lg:[&:nth-child(2n)]:border-r-0
+              sm:max-lg:[&:nth-child(n+3)]:border-b-0
+              sm:max-lg:last:border-b-0
+            `}
+            variants={cardVariants}
+            whileHover={{ y: -3 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
-            <div className="label-upper text-az-brand mb-[18px]">
+            <div className="label-upper text-az-brand mb-[18px] transition-colors group-hover:text-az-deep">
               {t(step.nKey)}
             </div>
             <div className="font-serif text-[18px] text-carbon mb-3 leading-[1.35]">
@@ -43,7 +85,7 @@ export default function ProcessGrid() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
