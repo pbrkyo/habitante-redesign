@@ -3,25 +3,67 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --carbon: #1E1D1A;
+  --ink: #3A3830;
+  --sand: #9E9690;
+  --sand-lt: #C8C3BC;
+  --bone: #E8E4DE;
+  --linen: #F0EDE7;
+  --cream: #F7F5F1;
+  --white: #FDFCFA;
+  --az-deep: #0C3270;
+  --az-brand: #1B52A6;
+  --az-electric: #2B3FD4;
+  --az-light: #E8EEF8;
+  --az-mid: #D0DCEF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), sans-serif;
+  background-color: var(--white);
+  color: var(--carbon);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-lora), serif;
+    font-weight: 400;
   }
+}
+
+@layer components {
+  .label-upper {
+    @apply text-[9px] uppercase tracking-label;
+  }
+
+  .nav-link {
+    @apply text-[10px] uppercase tracking-nav text-ink/45 transition-colors duration-200 hover:text-carbon;
+  }
+
+  .section-pad {
+    @apply px-[52px] max-md:px-6;
+  }
+
+  .border-hairline {
+    border-width: 0.5px;
+  }
+
+  .btn-primary {
+    @apply text-[10px] uppercase tracking-[0.14em] text-white bg-az-brand border-none py-[17px] px-11 rounded-sm cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-az-deep;
+  }
+
+  .btn-outline {
+    @apply text-[9px] uppercase tracking-[0.1em] text-az-brand border border-az-brand/40 py-[7px] px-[18px] rounded-sm cursor-pointer transition-all duration-200 hover:bg-az-light;
+  }
+}
+
+::selection {
+  background-color: var(--az-light);
+  color: var(--az-deep);
 }

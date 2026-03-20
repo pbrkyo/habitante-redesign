@@ -1,0 +1,65 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import type { Project, Language } from "@/types";
+
+interface ProjectCardProps {
+  project: Project;
+  lang: Language;
+  index: number;
+}
+
+export default function ProjectCard({ project, lang, index }: ProjectCardProps) {
+  const categoryLabels: Record<string, Record<Language, string>> = {
+    residential: { es: "Residencial", en: "Residential" },
+    commercial: { es: "Comercial", en: "Commercial" },
+    urban: { es: "Urbano", en: "Urban" },
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+    >
+      <Link
+        href={`/proyectos/${project.slug}`}
+        className="group block relative overflow-hidden"
+      >
+        <div className="aspect-[4/3] relative">
+          <Image
+            src={project.heroImage}
+            alt={project.title[lang]}
+            fill
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <div className="text-[8px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
+              {categoryLabels[project.category]?.[lang]} · {project.country}
+            </div>
+            <div className="font-serif text-base text-linen">
+              {project.title[lang]}
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-4 pb-6">
+          <div className="text-[8px] tracking-[0.18em] uppercase text-sand-light mb-1">
+            {categoryLabels[project.category]?.[lang]} · {project.city}
+          </div>
+          <h3 className="font-serif text-lg text-carbon group-hover:text-az-brand transition-colors duration-200">
+            {project.title[lang]}
+          </h3>
+          <p className="text-[11px] text-sand mt-1.5 leading-[1.7] line-clamp-2">
+            {project.description[lang]}
+          </p>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
