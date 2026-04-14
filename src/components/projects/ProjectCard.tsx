@@ -15,7 +15,6 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
   const categoryLabels: Record<string, Record<Language, string>> = {
     residential: { es: "Residencial", en: "Residential" },
     commercial: { es: "Comercial", en: "Commercial" },
-    urban: { es: "Urbano", en: "Urban" },
   };
 
   return (
@@ -38,7 +37,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
             <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
-              {categoryLabels[project.category]?.[lang]} · {project.country}
+              {categoryLabels[project.category]?.[lang]}
             </div>
             <div className="font-serif text-base text-linen">
               {project.title[lang]}

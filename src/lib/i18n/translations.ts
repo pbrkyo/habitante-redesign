@@ -10,12 +10,12 @@ export const translations: Translations = {
     "nav.lang": "EN",
 
     // Hero
-    "hero.eyebrow": "Costa Rica · Canadá · Nicaragua",
+    "hero.eyebrow": "Práctica internacional de autor",
     "hero.title.line1": "Arquitectura para",
     "hero.title.line2": "quien ",
     "hero.title.em": "la habita.",
     "hero.subtitle":
-      "Una colección de arquitectura para quien la habita, diseñada con visión global y alma local.",
+      "Diseñamos desde la experiencia humana, no desde la forma. Cada proyecto es un reflejo de quien lo vivirá.",
     "hero.scroll": "Explorar",
 
     // Statement Bar
@@ -62,14 +62,14 @@ export const translations: Translations = {
     // Projects Showcase
     "proy.label": "Proyectos seleccionados",
     "proy.title": "Una selección curada",
-    "proy.viewAll": "Ver todos →",
+    "proy.viewAll": "Ver todos",
 
     // Quote + Stats
     "cs.quote": "Habitar bien es una forma de ",
     "cs.quote.em": "humanidad.",
-    "cs.stat1.n": "3",
-    "cs.stat1.label": "países activos",
-    "cs.stat1.sub": "Costa Rica · Canadá · Nicaragua",
+    "cs.stat1.n": "Internacional",
+    "cs.stat1.label": "práctica de alcance global",
+    "cs.stat1.sub": "proyectos sin fronteras",
     "cs.stat2.n": "Autor",
     "cs.stat2.label": "práctica de firma",
     "cs.stat2.sub": "cada proyecto, sin fórmulas",
@@ -94,7 +94,7 @@ export const translations: Translations = {
     "teaser.title": "Una casa que acompaña la vida.",
     "teaser.desc":
       "En este proyecto residencial diseñamos desde la rutina del cliente: la forma en que recibe la luz cada mañana, el espacio que necesita para estar solo, el lugar donde se reúne con los suyos.",
-    "teaser.link": "Ver el proyecto →",
+    "teaser.link": "Ver el proyecto",
 
     // CTA
     "cta.label": "Comencemos",
@@ -105,13 +105,12 @@ export const translations: Translations = {
     "cta.note": "Sin compromiso · Brief emocional inicial",
 
     // Footer
-    "ft.tagline": "Visión global,\nalma local.",
+    "ft.tagline": "Arquitectura para\nquien la habita.",
     "ft.nav": "Navegar",
     "ft.projects": "Proyectos",
     "ft.contact": "Contacto",
     "ft.residential": "Residencial",
     "ft.commercial": "Comercial",
-    "ft.international": "Internacional",
     "ft.conversation": "Conversación",
     "ft.copyright": "© Habitante Arquitectura 2025",
 
@@ -121,7 +120,6 @@ export const translations: Translations = {
     "projects.all": "Todos",
     "projects.residential": "Residencial",
     "projects.commercial": "Comercial",
-    "projects.urban": "Urbano",
 
     // Contact page
     "contact.title": "Conversación",
@@ -131,7 +129,6 @@ export const translations: Translations = {
     "contact.type": "Tipo de proyecto",
     "contact.type.residential": "Residencial",
     "contact.type.commercial": "Comercial",
-    "contact.type.urban": "Urbano",
     "contact.type.other": "Otro",
     "contact.location": "Ubicación del proyecto",
     "contact.message": "Cuéntanos tu visión",
@@ -159,12 +156,12 @@ export const translations: Translations = {
     "nav.lang": "ES",
 
     // Hero
-    "hero.eyebrow": "Costa Rica · Canada · Nicaragua",
+    "hero.eyebrow": "International author practice",
     "hero.title.line1": "Architecture for",
     "hero.title.line2": "those who ",
     "hero.title.em": "inhabit it.",
     "hero.subtitle":
-      "A collection of architecture for the inhabitant, designed with global vision and local soul.",
+      "We design from human experience, not from form. Every project is a reflection of who will live it.",
     "hero.scroll": "Explore",
 
     // Statement Bar
@@ -211,14 +208,14 @@ export const translations: Translations = {
     // Projects Showcase
     "proy.label": "Selected projects",
     "proy.title": "A curated selection",
-    "proy.viewAll": "View all →",
+    "proy.viewAll": "View all",
 
     // Quote + Stats
     "cs.quote": "To inhabit well is a form of ",
     "cs.quote.em": "humanity.",
-    "cs.stat1.n": "3",
-    "cs.stat1.label": "active countries",
-    "cs.stat1.sub": "Costa Rica · Canada · Nicaragua",
+    "cs.stat1.n": "International",
+    "cs.stat1.label": "global reach practice",
+    "cs.stat1.sub": "projects without borders",
     "cs.stat2.n": "Author",
     "cs.stat2.label": "signature practice",
     "cs.stat2.sub": "each project, without formulas",
@@ -243,7 +240,7 @@ export const translations: Translations = {
     "teaser.title": "A house that accompanies life.",
     "teaser.desc":
       "In this residential project we designed from the client's routine: how they receive light each morning, the space they need to be alone, the place where they gather with their loved ones.",
-    "teaser.link": "View the project →",
+    "teaser.link": "View the project",
 
     // CTA
     "cta.label": "Let's begin",
@@ -254,13 +251,12 @@ export const translations: Translations = {
     "cta.note": "No commitment · Initial emotional brief",
 
     // Footer
-    "ft.tagline": "Global vision,\nlocal soul.",
+    "ft.tagline": "Architecture for\nthose who inhabit it.",
     "ft.nav": "Navigate",
     "ft.projects": "Projects",
     "ft.contact": "Contact",
     "ft.residential": "Residential",
     "ft.commercial": "Commercial",
-    "ft.international": "International",
     "ft.conversation": "Conversation",
     "ft.copyright": "© Habitante Arquitectura 2025",
 
@@ -270,7 +266,6 @@ export const translations: Translations = {
     "projects.all": "All",
     "projects.residential": "Residential",
     "projects.commercial": "Commercial",
-    "projects.urban": "Urban",
 
     // Contact page
     "contact.title": "Conversation",
@@ -280,7 +275,6 @@ export const translations: Translations = {
     "contact.type": "Project type",
     "contact.type.residential": "Residential",
     "contact.type.commercial": "Commercial",
-    "contact.type.urban": "Urban",
     "contact.type.other": "Other",
     "contact.location": "Project location",
     "contact.message": "Tell us your vision",

@@ -58,7 +58,6 @@ export default function ProjectDetailPage() {
   const categoryLabels: Record<string, Record<"es" | "en", string>> = {
     residential: { es: "Residencial", en: "Residential" },
     commercial: { es: "Comercial", en: "Commercial" },
-    urban: { es: "Urbano", en: "Urban" },
   };
 
   const related = projects
@@ -105,7 +104,7 @@ export default function ProjectDetailPage() {
               variants={fadeUpVariants}
               className="text-[11px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2"
             >
-              {categoryLabels[project.category]?.[lang]} · {project.country}
+              {categoryLabels[project.category]?.[lang]}
             </motion.div>
 
             <motion.h1
@@ -145,7 +144,7 @@ export default function ProjectDetailPage() {
                 {lang === "es" ? "Ubicación" : "Location"}
               </div>
               <div className="text-sm text-carbon">
-                {project.city}, {project.country}
+                {project.city}
               </div>
             </div>
           </div>
@@ -231,7 +230,7 @@ export default function ProjectDetailPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 group-hover:from-carbon/82 transition-all duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
-                      {categoryLabels[rp.category]?.[lang]} · {rp.country}
+                      {categoryLabels[rp.category]?.[lang]}
                     </div>
                     <div className="font-serif text-lg text-linen">
                       {rp.title[lang]}

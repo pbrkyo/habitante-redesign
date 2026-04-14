@@ -1,36 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const offices = [
+const typologies = [
   {
-    country: "Costa Rica",
-    city: "Tamarindo, Guanacaste",
-    code: "CR",
+    titleEs: "Residencias de autor",
+    titleEn: "Author residences",
     descEs:
-      "Sede principal. Desde aquí diseñamos proyectos residenciales y comerciales que dialogan con el trópico, la luz y la materialidad local.",
+      "Cada casa parte de un brief emocional. No diseñamos viviendas genéricas — diseñamos la forma específica en que una persona o familia quiere habitar su espacio.",
     descEn:
-      "Main headquarters. From here we design residential and commercial projects that dialogue with the tropics, light, and local materiality.",
+      "Every home starts from an emotional brief. We don't design generic housing — we design the specific way a person or family wants to inhabit their space.",
   },
   {
-    country: "Canadá",
-    city: "Vancouver, BC",
-    code: "CA",
+    titleEs: "Espacios comerciales",
+    titleEn: "Commercial spaces",
     descEs:
-      "Presencia internacional para clientes que buscan la misma sensibilidad de diseño en contextos distintos.",
+      "Oficinas, restaurantes y espacios de trabajo donde la arquitectura potencia la experiencia del usuario. El mismo rigor de autor aplicado a la escala comercial.",
     descEn:
-      "International presence for clients seeking the same design sensibility in different contexts.",
+      "Offices, restaurants, and workspaces where architecture enhances the user experience. The same author's rigor applied to commercial scale.",
   },
   {
-    country: "Nicaragua",
-    city: "Managua",
-    code: "NI",
+    titleEs: "Proyectos especiales",
+    titleEn: "Special projects",
     descEs:
-      "Proyectos comerciales y residenciales que extienden nuestra práctica a nuevos territorios centroamericanos.",
+      "Intervenciones urbanas, espacios públicos y encargos que trascienden la tipología convencional. Proyectos donde la arquitectura dialoga con la comunidad.",
     descEn:
-      "Commercial and residential projects extending our practice to new Central American territories.",
+      "Urban interventions, public spaces, and commissions that transcend conventional typology. Projects where architecture dialogues with the community.",
   },
 ];
 
@@ -82,8 +78,8 @@ export default function LaFirmaPage() {
           </h1>
           <p className="text-base text-ink/70 font-light leading-[1.9]">
             {lang === "es"
-              ? "Habitante es un estudio de arquitectura boutique fundado con una convicción: los espacios que habitamos nos transforman. Desde Guanacaste, Costa Rica, diseñamos arquitectura residencial, comercial y urbana que parte de la experiencia humana — no de la forma."
-              : "Habitante is a boutique architecture studio founded with a conviction: the spaces we inhabit transform us. From Guanacaste, Costa Rica, we design residential, commercial, and urban architecture that starts from human experience — not from form."}
+              ? "Habitante es un estudio de arquitectura boutique fundado con una convicción: los espacios que habitamos nos transforman. Diseñamos arquitectura residencial, comercial y especial que parte de la experiencia humana — no de la forma."
+              : "Habitante is a boutique architecture studio founded with a conviction: the spaces we inhabit transform us. We design residential, commercial, and special architecture that starts from human experience — not from form."}
           </p>
         </motion.div>
       </section>
@@ -166,39 +162,32 @@ export default function LaFirmaPage() {
         </div>
       </section>
 
-      {/* International presence */}
+      {/* Typologies */}
       <section className="bg-az-light section-pad py-20 border-b border-az-mid/50">
         <div className="label-upper text-az-brand/70 mb-3">
-          {lang === "es" ? "Presencia internacional" : "International presence"}
+          {lang === "es" ? "Tipos de proyecto" : "Project types"}
         </div>
         <h2 className="font-serif text-display-md text-carbon mb-14">
-          {lang === "es" ? "Tres países, una práctica" : "Three countries, one practice"}
+          {lang === "es"
+            ? "Práctica internacional, enfoque de autor"
+            : "International practice, author's approach"}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {offices.map((office, i) => (
+          {typologies.map((typ, i) => (
             <motion.div
-              key={office.code}
+              key={i}
               className="bg-white p-8 border border-bone/50"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
             >
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin size={14} className="text-az-brand" />
-                <span className="text-[11px] uppercase tracking-label text-az-brand">
-                  {office.code}
-                </span>
-              </div>
-              <h3 className="font-serif text-lg text-carbon mb-1">
-                {office.country}
+              <h3 className="font-serif text-lg text-carbon mb-3">
+                {lang === "es" ? typ.titleEs : typ.titleEn}
               </h3>
-              <div className="text-xs text-sand mb-4">
-                {office.city}
-              </div>
               <p className="text-sm text-ink/70 leading-[1.8]">
-                {lang === "es" ? office.descEs : office.descEn}
+                {lang === "es" ? typ.descEs : typ.descEn}
               </p>
             </motion.div>
           ))}

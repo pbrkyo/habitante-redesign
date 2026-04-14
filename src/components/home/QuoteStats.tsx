@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, useInView } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const stats = [
-  { nKey: "cs.stat1.n", labelKey: "cs.stat1.label", subKey: "cs.stat1.sub", numericValue: 3, large: false },
+  { nKey: "cs.stat1.n", labelKey: "cs.stat1.label", subKey: "cs.stat1.sub", numericValue: null, large: true },
   { nKey: "cs.stat2.n", labelKey: "cs.stat2.label", subKey: "cs.stat2.sub", numericValue: null, large: true },
   { nKey: "cs.stat3.n", labelKey: "cs.stat3.label", subKey: "cs.stat3.sub", numericValue: null, large: true },
 ];

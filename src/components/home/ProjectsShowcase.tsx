@@ -82,7 +82,7 @@ export default function ProjectsShowcase() {
             <div className="absolute inset-0 bg-gradient-to-t from-carbon/78 to-carbon/0 group-hover:from-carbon/88 transition-all duration-300" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
-                {t(`ft.${main.category}`)} · {main.country}
+                {t(`ft.${main.category}`)}
               </div>
               <div className="font-serif text-lg text-linen leading-[1.2]">
                 {main.title[lang]}
@@ -91,16 +91,6 @@ export default function ProjectsShowcase() {
                 {main.city}, {main.year}
               </div>
             </div>
-            <motion.div
-              className="absolute right-[22px] bottom-[22px] text-base text-[#8AABDC]"
-              initial={{ opacity: 0, x: -8 }}
-              whileHover={{ opacity: 1, x: 0 }}
-              animate={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              →
-            </motion.div>
-            {/* Arrow shown via group hover */}
             <div className="absolute right-[22px] bottom-[22px] text-base text-[#8AABDC]/70 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
               →
             </div>
@@ -125,7 +115,7 @@ export default function ProjectsShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-carbon/78 to-carbon/0 group-hover:from-carbon/88 transition-all duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
-                    {t(`ft.${project.category}`)} · {project.country}
+                    {t(`ft.${project.category}`)}
                   </div>
                   <div className="font-serif text-lg text-linen leading-[1.2]">
                     {project.title[lang]}

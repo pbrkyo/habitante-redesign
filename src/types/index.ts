@@ -4,7 +4,7 @@ export interface Project {
   slug: string;
   title: { es: string; en: string };
   description: { es: string; en: string };
-  category: "residential" | "commercial" | "urban";
+  category: "residential" | "commercial";
   country: string;
   city: string;
   year: number;

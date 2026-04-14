@@ -71,12 +71,6 @@ export default function Footer() {
             >
               {t("ft.commercial")}
             </Link>
-            <Link
-              href="/proyectos?cat=urban"
-              className="text-sm text-ink/65 hover:text-carbon transition-colors"
-            >
-              {t("ft.international")}
-            </Link>
           </div>
         </div>
 
@@ -114,13 +108,6 @@ export default function Footer() {
 
       <div className="flex justify-between items-center pt-6 text-xs text-sand tracking-[0.05em]">
         <span>{t("ft.copyright")}</span>
-        <div className="flex gap-3.5">
-          <span className="text-xs text-az-brand/60 tracking-nav">CR</span>
-          <span>·</span>
-          <span className="text-xs text-az-brand/60 tracking-nav">CA</span>
-          <span>·</span>
-          <span className="text-xs text-az-brand/60 tracking-nav">NI</span>
-        </div>
       </div>
     </footer>
   );

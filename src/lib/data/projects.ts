@@ -8,8 +8,8 @@ export const projects: Project[] = [
       en: "Descalzo House",
     },
     description: {
-      es: "Propuesta arquitectónica de alto nivel en Guanacaste. Un espacio residencial único en armonía con la naturaleza, inspirado en Bali, con terrazas panorámicas y piscina infinita.",
-      en: "A high-end architectural proposal in Guanacaste. A unique residential space in harmony with nature, Bali-inspired with panoramic terraces and infinity pool.",
+      es: "Estar descalzo y libre. La casa se posa sobre la loma de Nosara y abre los ojos en todas las direcciones. No hay una fachada principal porque el bosque rodea el terreno por todos lados y todos los lados merecen ser mirados.",
+      en: "Barefoot and free. The house rests on the hills of Nosara and opens its eyes in every direction. There is no main facade because the forest surrounds the site from all sides — and every side deserves to be seen.",
     },
     category: "residential",
     country: "Costa Rica",
@@ -25,6 +25,48 @@ export const projects: Project[] = [
       "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_00.jpg",
     ],
     featured: true,
+  },
+  {
+    slug: "casa-dosel",
+    title: {
+      es: "Casa Dosel",
+      en: "Dosel House",
+    },
+    description: {
+      es: "Una piscina entre las copas. La casa se organiza desde esa experiencia: una residencia elevada que habita el dosel del bosque tropical, donde nadar es flotar entre las ramas.",
+      en: "A pool among the treetops. The house is organized around that experience: an elevated residence that inhabits the tropical forest canopy, where swimming is floating among the branches.",
+    },
+    category: "residential",
+    country: "Costa Rica",
+    city: "Tamarindo",
+    year: 2023,
+    area: "450 m²",
+    heroImage:
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
+    images: [
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
+    ],
+  },
+  {
+    slug: "casa-enso",
+    title: {
+      es: "Casa Enso",
+      en: "Enso House",
+    },
+    description: {
+      es: "Un jardín en el centro. El mar en el horizonte. La piscina, entre los árboles. Inspirada en el enso japonés, esta casa se orienta hacia la contemplación y el sunset como eje del diseño.",
+      en: "A garden at the center. The sea on the horizon. The pool, among the trees. Inspired by the Japanese enso, this house is oriented toward contemplation and the sunset as the axis of design.",
+    },
+    category: "residential",
+    country: "Costa Rica",
+    city: "Senderos",
+    year: 2026,
+    area: "",
+    heroImage:
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
+    images: [
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
+    ],
   },
   {
     slug: "qatar-house",
@@ -49,6 +91,27 @@ export const projects: Project[] = [
       "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_03.jpg",
       "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_04.jpg",
       "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_05.jpg",
+    ],
+  },
+  {
+    slug: "villa-fuste",
+    title: {
+      es: "Villa Fuste",
+      en: "Villa Fuste",
+    },
+    description: {
+      es: "Una casa que te recuerda tu escala humana. Estructura que te habla de la naturaleza sin imitarla, con pilotes masivos de concreto como troncos vistos desde el suelo del bosque.",
+      en: "A house that reminds you of your human scale. Structure that speaks of nature without imitating it, with massive concrete pilotis like trunks seen from the forest floor.",
+    },
+    category: "residential",
+    country: "Costa Rica",
+    city: "Senderos",
+    year: 2026,
+    area: "900 m²",
+    heroImage:
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
+    images: [
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
     ],
   },
   {
@@ -79,8 +142,8 @@ export const projects: Project[] = [
       en: "House 89",
     },
     description: {
-      es: "Esta casa de playa no es solo una vivienda; es un testimonio del lujo sostenible en Costa Rica. Su filosofía de diseño integra la naturaleza con la arquitectura moderna.",
-      en: "This beach house is not just a dwelling; it's a testament to sustainable luxury living in Costa Rica. Its design ethos integrates nature with modern architecture.",
+      es: "Esta casa de playa no es solo una vivienda; es un testimonio del lujo sostenible. Su filosofía de diseño integra la naturaleza con la arquitectura moderna.",
+      en: "This beach house is not just a dwelling; it's a testament to sustainable luxury living. Its design ethos integrates nature with modern architecture.",
     },
     category: "residential",
     country: "Costa Rica",
@@ -104,8 +167,8 @@ export const projects: Project[] = [
       en: "Office Tamarindo",
     },
     description: {
-      es: "Nuestra sede ubicada en el centro de Tamarindo, Costa Rica. Un espacio de diseño contemporáneo que fusiona concreto, madera y luz natural.",
-      en: "Our headquarters located in downtown Tamarindo, Costa Rica. A contemporary design space fusing concrete, wood, and natural light.",
+      es: "Nuestra sede ubicada en el centro de Tamarindo. Un espacio de diseño contemporáneo que fusiona concreto, madera y luz natural.",
+      en: "Our headquarters located in downtown Tamarindo. A contemporary design space fusing concrete, wood, and natural light.",
     },
     category: "commercial",
     country: "Costa Rica",
@@ -129,10 +192,10 @@ export const projects: Project[] = [
       en: "Parque Urbano",
     },
     description: {
-      es: "Proyecto de diseño comercial que fusiona funcionalidad, lujo y conexión con el entorno natural. Un espacio que redefine la arquitectura comercial en Costa Rica.",
-      en: "Commercial design project fusing functionality, luxury, and connection with the natural environment. A space that redefines commercial architecture in Costa Rica.",
+      es: "Proyecto de diseño comercial que fusiona funcionalidad, lujo y conexión con el entorno natural. Un espacio que redefine la arquitectura comercial.",
+      en: "Commercial design project fusing functionality, luxury, and connection with the natural environment. A space that redefines commercial architecture.",
     },
-    category: "urban",
+    category: "commercial",
     country: "Costa Rica",
     city: "Cartago",
     year: 2024,

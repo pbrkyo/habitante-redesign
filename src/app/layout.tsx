@@ -30,15 +30,14 @@ export const metadata: Metadata = {
     template: "%s | Habitante Arquitectura",
   },
   description:
-    "Diseñamos desde la experiencia humana, no desde la forma. Arquitectura residencial, comercial y urbana en Costa Rica, Canadá y Nicaragua.",
+    "Diseñamos desde la experiencia humana, no desde la forma. Arquitectura residencial y comercial con alcance internacional.",
   keywords: [
-    "arquitectura Costa Rica",
-    "arquitectura Guanacaste",
+    "arquitectura residencial",
     "diseño residencial lujo",
     "arquitectura comercial",
     "neuroarquitectura",
     "Habitante Arquitectura",
-    "arquitectos Costa Rica",
+    "arquitectura de autor",
   ],
   authors: [{ name: "Habitante Arquitectura" }],
   creator: "Habitante Arquitectura",
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "Habitante Arquitectura",
     title: "Habitante Arquitectura — Arquitectura para quien la habita",
     description:
-      "Diseñamos desde la experiencia humana, no desde la forma. Arquitectura residencial, comercial y urbana en Costa Rica, Canadá y Nicaragua.",
+      "Diseñamos desde la experiencia humana, no desde la forma. Arquitectura residencial y comercial con alcance internacional.",
     images: [
       {
         url: `${siteUrl}/images/og-image.jpg`,
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Habitante Arquitectura — Arquitectura para quien la habita",
     description:
-      "Diseñamos desde la experiencia humana, no desde la forma. Arquitectura en Costa Rica, Canadá y Nicaragua.",
+      "Diseñamos desde la experiencia humana, no desde la forma. Arquitectura residencial y comercial con alcance internacional.",
     images: [`${siteUrl}/images/og-image.jpg`],
   },
   robots: {
@@ -93,7 +92,7 @@ const organizationSchema = {
   "@type": "ProfessionalService",
   name: "Habitante Arquitectura",
   description:
-    "Estudio de arquitectura boutique especializado en diseño residencial, comercial y urbano en Costa Rica, Canadá y Nicaragua.",
+    "Estudio de arquitectura boutique especializado en diseño residencial y comercial con alcance internacional.",
   url: siteUrl,
   logo: `${siteUrl}/icons/habitante_logo_new.svg`,
   image: `${siteUrl}/images/og-image.jpg`,
@@ -106,14 +105,11 @@ const organizationSchema = {
     addressCountry: "CR",
   },
   areaServed: [
-    { "@type": "Country", name: "Costa Rica" },
-    { "@type": "Country", name: "Canada" },
-    { "@type": "Country", name: "Nicaragua" },
+    { "@type": "Place", name: "International" },
   ],
   serviceType: [
     "Arquitectura Residencial",
     "Arquitectura Comercial",
-    "Arquitectura Urbana",
     "Neuroarquitectura",
   ],
   sameAs: ["https://www.instagram.com/habitantearquitectura/"],

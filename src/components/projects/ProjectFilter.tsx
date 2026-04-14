@@ -14,7 +14,6 @@ export default function ProjectFilter({ active, onChange }: ProjectFilterProps) 
     { key: null, label: t("projects.all") },
     { key: "residential", label: t("projects.residential") },
     { key: "commercial", label: t("projects.commercial") },
-    { key: "urban", label: t("projects.urban") },
   ];
 
   return (

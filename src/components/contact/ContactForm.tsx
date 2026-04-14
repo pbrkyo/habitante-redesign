@@ -87,7 +87,6 @@ export default function ContactForm() {
           <option value="">{t("contact.type")}</option>
           <option value="residential">{t("contact.type.residential")}</option>
           <option value="commercial">{t("contact.type.commercial")}</option>
-          <option value="urban">{t("contact.type.urban")}</option>
           <option value="other">{t("contact.type.other")}</option>
         </select>
       </div>
