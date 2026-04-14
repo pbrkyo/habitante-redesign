@@ -53,10 +53,10 @@ export default function NeuroSection() {
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[480px]">
-      {/* Image side with parallax scale */}
+      {/* Image side with parallax scale + CSS filter boost */}
       <div ref={imageRef} className="relative overflow-hidden min-h-[300px] md:min-h-0">
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.15] saturate-[1.25] brightness-[1.05]"
           style={{
             backgroundImage:
               "url('https://www.habitante.co/wp-content/uploads/2025/12/bg-home.webp')",
