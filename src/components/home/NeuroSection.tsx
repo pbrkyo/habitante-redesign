@@ -63,8 +63,6 @@ export default function NeuroSection() {
             scale: imageScale,
           }}
         />
-        {/* Subtle overlay for depth */}
-        <div className="absolute inset-0 bg-carbon/10" />
       </div>
 
       {/* Content side */}

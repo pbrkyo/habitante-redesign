@@ -41,14 +41,17 @@ export default function Hero() {
       ref={sectionRef}
       className="relative h-[92vh] min-h-[600px] overflow-hidden flex items-end bg-carbon"
     >
-      {/* Background image — full intensity, parallax + Ken Burns */}
+      {/* Background image — full intensity, parallax + Ken Burns slow zoom */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-[center_35%] scale-[1.08]"
+        className="absolute inset-0 bg-cover bg-[center_35%]"
         style={{
           backgroundImage:
             "url('https://www.habitante.co/wp-content/uploads/2025/12/slider1.webp')",
           y: bgY,
         }}
+        initial={{ scale: 1.18 }}
+        animate={{ scale: 1.03 }}
+        transition={{ duration: 14, ease: "easeOut" }}
       />
 
       {/* Cinematic bottom scrim — dark gradient, lower half only */}
