@@ -1,0 +1,8 @@
+Fix duplicate images on homepage and projects grid
+
+- Reorder projects array so homepage showcase shows 3 distinct images
+  (Casa Descalzo, Qatar House, Testarossa) instead of 3x the same photo
+- Assign different placeholder images to new projects (Casa Dosel,
+  Villa Fuste, Casa Enso) using different shots from the Descalzo series
+- Move new projects after the photographed ones so they appear lower
+  in the grid, not as the hero showcase items

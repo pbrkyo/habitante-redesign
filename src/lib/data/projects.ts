@@ -27,48 +27,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "casa-dosel",
-    title: {
-      es: "Casa Dosel",
-      en: "Dosel House",
-    },
-    description: {
-      es: "Una piscina entre las copas. La casa se organiza desde esa experiencia: una residencia elevada que habita el dosel del bosque tropical, donde nadar es flotar entre las ramas.",
-      en: "A pool among the treetops. The house is organized around that experience: an elevated residence that inhabits the tropical forest canopy, where swimming is floating among the branches.",
-    },
-    category: "residential",
-    country: "Costa Rica",
-    city: "Tamarindo",
-    year: 2023,
-    area: "450 m²",
-    heroImage:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
-    images: [
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
-    ],
-  },
-  {
-    slug: "casa-enso",
-    title: {
-      es: "Casa Enso",
-      en: "Enso House",
-    },
-    description: {
-      es: "Un jardín en el centro. El mar en el horizonte. La piscina, entre los árboles. Inspirada en el enso japonés, esta casa se orienta hacia la contemplación y el sunset como eje del diseño.",
-      en: "A garden at the center. The sea on the horizon. The pool, among the trees. Inspired by the Japanese enso, this house is oriented toward contemplation and the sunset as the axis of design.",
-    },
-    category: "residential",
-    country: "Costa Rica",
-    city: "Senderos",
-    year: 2026,
-    area: "",
-    heroImage:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
-    images: [
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
-    ],
-  },
-  {
     slug: "qatar-house",
     title: {
       es: "Qatar House",
@@ -91,27 +49,6 @@ export const projects: Project[] = [
       "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_03.jpg",
       "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_04.jpg",
       "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_05.jpg",
-    ],
-  },
-  {
-    slug: "villa-fuste",
-    title: {
-      es: "Villa Fuste",
-      en: "Villa Fuste",
-    },
-    description: {
-      es: "Una casa que te recuerda tu escala humana. Estructura que te habla de la naturaleza sin imitarla, con pilotes masivos de concreto como troncos vistos desde el suelo del bosque.",
-      en: "A house that reminds you of your human scale. Structure that speaks of nature without imitating it, with massive concrete pilotis like trunks seen from the forest floor.",
-    },
-    category: "residential",
-    country: "Costa Rica",
-    city: "Senderos",
-    year: 2026,
-    area: "900 m²",
-    heroImage:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
-    images: [
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
     ],
   },
   {
@@ -158,6 +95,69 @@ export const projects: Project[] = [
       "https://www.habitante.co/wp-content/uploads/2024/05/A7303580-scaled.jpg",
       "https://www.habitante.co/wp-content/uploads/2024/05/A7303607-scaled.jpg",
       "https://www.habitante.co/wp-content/uploads/2024/05/A7303757-scaled.jpg",
+    ],
+  },
+  {
+    slug: "casa-dosel",
+    title: {
+      es: "Casa Dosel",
+      en: "Dosel House",
+    },
+    description: {
+      es: "Una piscina entre las copas. La casa se organiza desde esa experiencia: una residencia elevada que habita el dosel del bosque tropical, donde nadar es flotar entre las ramas.",
+      en: "A pool among the treetops. The house is organized around that experience: an elevated residence that inhabits the tropical forest canopy, where swimming is floating among the branches.",
+    },
+    category: "residential",
+    country: "Costa Rica",
+    city: "Tamarindo",
+    year: 2023,
+    area: "450 m²",
+    heroImage:
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_03.png",
+    images: [
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_03.png",
+    ],
+  },
+  {
+    slug: "villa-fuste",
+    title: {
+      es: "Villa Fuste",
+      en: "Villa Fuste",
+    },
+    description: {
+      es: "Una casa que te recuerda tu escala humana. Estructura que te habla de la naturaleza sin imitarla, con pilotes masivos de concreto como troncos vistos desde el suelo del bosque.",
+      en: "A house that reminds you of your human scale. Structure that speaks of nature without imitating it, with massive concrete pilotis like trunks seen from the forest floor.",
+    },
+    category: "residential",
+    country: "Costa Rica",
+    city: "Senderos",
+    year: 2026,
+    area: "900 m²",
+    heroImage:
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_04.png",
+    images: [
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_04.png",
+    ],
+  },
+  {
+    slug: "casa-enso",
+    title: {
+      es: "Casa Enso",
+      en: "Enso House",
+    },
+    description: {
+      es: "Un jardín en el centro. El mar en el horizonte. La piscina, entre los árboles. Inspirada en el enso japonés, esta casa se orienta hacia la contemplación y el sunset como eje del diseño.",
+      en: "A garden at the center. The sea on the horizon. The pool, among the trees. Inspired by the Japanese enso, this house is oriented toward contemplation and the sunset as the axis of design.",
+    },
+    category: "residential",
+    country: "Costa Rica",
+    city: "Senderos",
+    year: 2026,
+    area: "",
+    heroImage:
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_00.jpg",
+    images: [
+      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_00.jpg",
     ],
   },
   {
