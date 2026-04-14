@@ -15,11 +15,12 @@ const headingVariants = {
 };
 
 const lineVariants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease },
+    clipPath: "inset(0% 0 0 0)",
+    transition: { duration: 0.85, ease },
   },
 };
 

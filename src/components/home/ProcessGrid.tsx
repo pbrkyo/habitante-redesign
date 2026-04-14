@@ -25,11 +25,12 @@ const gridVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease },
+    scale: 1,
+    transition: { duration: 0.75, ease },
   },
 };
 
@@ -43,13 +44,24 @@ export default function ProcessGrid() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
+        className="flex items-end gap-8 mb-12"
       >
-        <div className="label-upper text-sand-light mb-3">
-          {t("proc.label")}
+        <div>
+          <div className="label-upper text-sand-light mb-3">
+            {t("proc.label")}
+          </div>
+          <h2 className="font-serif text-display-md text-carbon">
+            {t("proc.title")}
+          </h2>
         </div>
-        <h2 className="font-serif text-display-md text-carbon mb-12">
-          {t("proc.title")}
-        </h2>
+        <motion.div
+          className="hidden md:block flex-1 h-px bg-bone/60 mb-3"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
+          style={{ originX: 0 }}
+        />
       </motion.div>
 
       <motion.div

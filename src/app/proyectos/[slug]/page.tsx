@@ -68,7 +68,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
 
     case "quote":
       return (
-        <section className={`section-pad py-20 ${section.bgDark ? "bg-[#1A3A2A] text-linen" : "bg-linen text-carbon"}`}>
+        <section className={`section-pad py-20 ${section.bgDark ? "bg-az-deep text-linen" : "bg-linen text-carbon"}`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -146,7 +146,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
 
     case "feature":
       return (
-        <section className={`section-pad py-16 border-t border-bone/50 ${section.bgDark ? "bg-carbon" : "bg-white"}`}>
+        <section className={`section-pad py-16 border-t border-bone/50 ${section.bgDark ? "bg-az-deep" : "bg-white"}`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

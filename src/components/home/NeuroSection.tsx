@@ -42,26 +42,35 @@ const bulletItemVariants = {
 
 export default function NeuroSection() {
   const { t } = useLanguage();
-  const imageRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: imageRef,
+    target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.02, 1.08]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const clipProgress = useTransform(scrollYProgress, [0, 0.35], [15, 0]);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 min-h-[480px]">
-      {/* Image side with parallax scale + CSS filter boost */}
-      <div ref={imageRef} className="relative overflow-hidden min-h-[300px] md:min-h-0">
+    <section ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 min-h-[520px]">
+      {/* Image side — clip-path reveal + parallax */}
+      <div className="relative overflow-hidden min-h-[340px] md:min-h-0">
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.15] saturate-[1.25] brightness-[1.05]"
+          className="absolute inset-[-10%] bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://www.habitante.co/wp-content/uploads/2025/12/bg-home.webp')",
-            scale: imageScale,
+              "url('https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_03.png')",
+            y: imageY,
           }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-az-brand origin-left"
+          style={{ scaleX: clipProgress.get() > 0 ? 1 : 0 }}
+          initial={{ scaleX: 1 }}
+          whileInView={{ scaleX: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
         />
       </div>
 

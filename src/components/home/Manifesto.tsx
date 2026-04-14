@@ -19,11 +19,12 @@ const quoteVariants = {
 };
 
 const lineVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.75, ease },
+    clipPath: "inset(0% 0 0 0)",
+    transition: { duration: 0.9, ease },
   },
 };
 
@@ -35,11 +36,11 @@ const principleVariants = {
 };
 
 const rowVariants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease },
+    x: 0,
+    transition: { duration: 0.7, ease },
   },
 };
 
