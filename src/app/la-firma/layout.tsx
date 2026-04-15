@@ -3,7 +3,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "La firma",
   description:
-    "Habitante Arquitectura es un estudio boutique de arquitectura con presencia en Costa Rica, Canadá y Nicaragua. Diseñamos desde la experiencia humana.",
+    "Habitante Arquitectura es un estudio boutique de arquitectura con presencia internacional. Diseñamos desde la experiencia humana.",
+  keywords: [
+    "estudio de arquitectura",
+    "arquitectura boutique",
+    "Habitante Arquitectura",
+    "diseño de autor",
+    "arquitectura residencial",
+    "neuroarquitectura",
+  ],
   openGraph: {
     title: "La firma | Habitante Arquitectura",
     description:

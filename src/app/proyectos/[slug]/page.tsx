@@ -231,6 +231,55 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
         </section>
       );
 
+    case "fullImage":
+      return (
+        <motion.section
+          className="relative w-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8 }}
+        >
+          {section.images?.[0] && (
+            <Image
+              src={section.images[0]}
+              alt={section.credit ?? ""}
+              width={1800}
+              height={1000}
+              className="w-full h-auto object-cover"
+            />
+          )}
+          {section.credit && (
+            <div className="absolute bottom-4 right-6 text-[11px] text-white/60 tracking-wide">
+              {section.credit}
+            </div>
+          )}
+        </motion.section>
+      );
+
+    case "imagePair":
+      return (
+        <motion.section
+          className="grid grid-cols-1 md:grid-cols-2 gap-1"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7 }}
+        >
+          {section.images?.slice(0, 2).map((img, i) => (
+            <div key={i} className="relative overflow-hidden">
+              <Image
+                src={img}
+                alt={section.credit ?? `Image ${i + 1}`}
+                width={900}
+                height={600}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          ))}
+        </motion.section>
+      );
+
     default:
       return null;
   }
@@ -293,9 +342,9 @@ export default function ProjectDetailPage() {
             <motion.div variants={fadeUpVariants}>
               <Link
                 href="/proyectos"
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-nav text-linen/80 hover:text-linen transition-colors mb-6"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-nav text-linen/80 hover:text-linen transition-colors mb-6 min-h-[44px] py-2"
               >
-                <ArrowLeft size={14} />
+                <ArrowLeft size={16} />
                 {t("nav.projects")}
               </Link>
             </motion.div>
@@ -434,22 +483,24 @@ export default function ProjectDetailPage() {
 
       {/* Next project (for rich projects) */}
       {nextProj && (
-        <section className="bg-carbon section-pad py-16 flex items-center justify-between">
-          <div>
-            <div className="label-upper text-bone/40 mb-2">
-              {lang === "es" ? "Siguiente proyecto" : "Next project"}
+        <Link
+          href={`/proyectos/${nextProj.slug}`}
+          className="block bg-carbon section-pad py-16 group"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <div className="label-upper text-bone/40 mb-2">
+                {lang === "es" ? "Siguiente proyecto" : "Next project"}
+              </div>
+              <div className="font-serif text-display-sm text-linen group-hover:text-az-light transition-colors">
+                {nextProj.title[lang]}
+              </div>
             </div>
-            <div className="font-serif text-display-sm text-linen">
-              {nextProj.title[lang]}
-            </div>
+            <span className="text-2xl text-az-light/60 group-hover:text-az-light group-hover:translate-x-2 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center sm:justify-end">
+              →
+            </span>
           </div>
-          <Link
-            href={`/proyectos/${nextProj.slug}`}
-            className="text-2xl text-az-light/60 hover:text-az-light transition-colors"
-          >
-            →
-          </Link>
-        </section>
+        </Link>
       )}
 
       {/* CTA (for rich projects) */}

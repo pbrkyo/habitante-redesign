@@ -4,6 +4,13 @@ export const metadata: Metadata = {
   title: "Conversación",
   description:
     "Inicia una conversación con Habitante Arquitectura. Cuéntanos sobre tu proyecto, tu visión y cómo quieres habitar tu espacio.",
+  keywords: [
+    "contacto arquitectura",
+    "iniciar proyecto",
+    "brief emocional",
+    "consulta arquitectónica",
+    "Habitante Arquitectura",
+  ],
   openGraph: {
     title: "Conversación | Habitante Arquitectura",
     description:
