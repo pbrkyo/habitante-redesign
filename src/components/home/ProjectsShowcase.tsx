@@ -1,16 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { projects } from "@/lib/data/projects";
 
 const easeWipe = [0.76, 0, 0.24, 1] as const;
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-function ProjectCard({
+function ExpandingProjectCard({
   project,
   index,
   lang,
@@ -22,83 +21,171 @@ function ProjectCard({
   categoryLabel: string;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [hasExpanded, setHasExpanded] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ["start end", "end start"],
+    offset: ["start 0.85", "start 0.25"],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-  const isEven = index % 2 === 0;
+
+  // Image scale: starts slightly zoomed in, settles to normal
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.15, 1.0]);
+
+  // Card height expansion: starts compact, expands to full
+  const cardHeight = useTransform(scrollYProgress, [0, 0.6], ["280px", "560px"]);
+  const cardHeightMobile = useTransform(scrollYProgress, [0, 0.6], ["220px", "420px"]);
+
+  // Content slide-up
+  const contentY = useTransform(scrollYProgress, [0.2, 0.7], [60, 0]);
+  const contentOpacity = useTransform(scrollYProgress, [0.15, 0.55], [0, 1]);
+
+  // Animated line width
+  const lineWidth = useTransform(scrollYProgress, [0.3, 0.8], ["0%", "100%"]);
+
+  // Overlay darkening as content appears
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.15, 0.55]);
+
+  // Index number drift
+  const numberX = useTransform(scrollYProgress, [0, 1], [-30, 0]);
+  const numberOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 0.08]);
+
+  // Tagline reveal
+  const taglineY = useTransform(scrollYProgress, [0.5, 0.85], [20, 0]);
+  const taglineOpacity = useTransform(scrollYProgress, [0.5, 0.85], [0, 1]);
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (v > 0.3 && !hasExpanded) setHasExpanded(true);
+  });
 
   return (
     <motion.div
       ref={cardRef}
-      className="group relative overflow-hidden"
-      initial={{ opacity: 0, clipPath: isEven ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)" }}
-      whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0%)" }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 1.2, ease: easeWipe, delay: index * 0.1 }}
+      className="relative overflow-hidden group cursor-pointer"
+      initial={{ opacity: 0, clipPath: "inset(8% 4% 8% 4%)" }}
+      whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 1.0, ease: easeWipe, delay: index * 0.08 }}
     >
-      <Link href={`/proyectos/${project.slug}`} className="block relative h-[520px] max-md:h-[400px] overflow-hidden">
-        {/* Parallax image */}
-        <motion.div className="absolute inset-[-8%]" style={{ y: imageY }}>
-          <Image
-            src={project.heroImage}
-            alt={project.title[lang]}
-            fill
-            className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.06]"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </motion.div>
-
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 via-carbon/20 to-transparent group-hover:from-carbon/90 transition-all duration-500" />
-
-        {/* Index number -- decorative */}
+      <Link href={`/proyectos/${project.slug}`} className="block relative overflow-hidden">
         <motion.div
-          className="absolute top-6 left-8 font-serif text-[80px] md:text-[120px] text-white/[0.06] leading-none select-none pointer-events-none"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 + index * 0.1, ease }}
+          className="relative w-full overflow-hidden max-md:hidden"
+          style={{ height: cardHeight }}
         >
-          0{index + 1}
+          <motion.div
+            className="absolute inset-0"
+            style={{ scale: imageScale }}
+          >
+            <Image
+              src={project.heroImage}
+              alt={project.title[lang]}
+              fill
+              className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.04]"
+              sizes="100vw"
+              priority={index < 2}
+            />
+          </motion.div>
+
+          {/* Dynamic gradient overlay */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-carbon/70 via-carbon/30 to-transparent"
+            style={{ opacity: overlayOpacity }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-carbon/60 via-transparent to-transparent" />
+
+          {/* Ghost index */}
+          <motion.div
+            className="absolute top-6 right-10 font-serif text-[140px] text-white leading-none select-none pointer-events-none"
+            style={{ x: numberX, opacity: numberOpacity }}
+          >
+            0{index + 1}
+          </motion.div>
+
+          {/* Scroll-revealed content */}
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 p-10 md:p-14"
+            style={{ y: contentY, opacity: contentOpacity }}
+          >
+            <div className="flex items-end justify-between gap-8">
+              <div className="max-w-2xl">
+                <div className="text-[11px] tracking-[0.22em] uppercase text-[#8AABDC] mb-2.5">
+                  {categoryLabel} · {project.year}
+                </div>
+                <h3 className="font-serif text-display-md text-linen mb-2 group-hover:translate-x-3 transition-transform duration-600">
+                  {project.title[lang]}
+                </h3>
+
+                {/* Tagline appears last */}
+                {project.tagline && (
+                  <motion.p
+                    className="text-[14px] text-bone/55 font-light leading-[1.7] max-w-lg"
+                    style={{ y: taglineY, opacity: taglineOpacity }}
+                  >
+                    {project.tagline[lang].split("\n")[0]}
+                  </motion.p>
+                )}
+
+                {/* Expanding line */}
+                <motion.div
+                  className="h-px bg-az-light/40 mt-4 origin-left"
+                  style={{ width: lineWidth }}
+                />
+              </div>
+
+              {/* Arrow with hover */}
+              <div className="flex-shrink-0 mb-2">
+                <span className="text-xl text-az-light/40 group-hover:text-az-light group-hover:translate-x-3 transition-all duration-500 block">
+                  →
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-          <div className="text-[11px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2">
-            {categoryLabel}
-          </div>
-          <h3 className="font-serif text-display-sm text-linen mb-1 group-hover:translate-x-2 transition-transform duration-500">
-            {project.title[lang]}
-          </h3>
-          <div className="text-[12px] text-bone/50 mb-4">
-            {project.city} · {project.year}
-          </div>
-
-          {/* Tagline reveal on hover */}
-          {project.tagline && (
-            <div className="max-h-0 group-hover:max-h-[60px] overflow-hidden transition-all duration-500 ease-out">
-              <p className="text-[13px] text-bone/60 font-light leading-[1.6] max-w-sm">
-                {project.tagline[lang].split("\n")[0]}
-              </p>
-            </div>
-          )}
-
-          {/* Animated line + arrow */}
-          <div className="flex items-center gap-3 mt-3">
-            <motion.div
-              className="h-px bg-az-light/30 group-hover:bg-az-light/60 transition-colors duration-500"
-              initial={{ width: 0 }}
-              whileInView={{ width: "60px" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 + index * 0.1, ease: easeWipe }}
+        {/* Mobile version with simpler animation */}
+        <motion.div
+          className="relative w-full overflow-hidden md:hidden"
+          style={{ height: cardHeightMobile }}
+        >
+          <motion.div
+            className="absolute inset-0"
+            style={{ scale: imageScale }}
+          >
+            <Image
+              src={project.heroImage}
+              alt={project.title[lang]}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index < 2}
             />
-            <span className="text-sm text-az-light/50 group-hover:text-az-light group-hover:translate-x-2 transition-all duration-400">
-              →
-            </span>
-          </div>
-        </div>
+          </motion.div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-carbon/75 via-carbon/20 to-transparent" />
+
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 p-6"
+            style={{ y: contentY, opacity: contentOpacity }}
+          >
+            <div className="text-[10px] tracking-[0.2em] uppercase text-[#8AABDC] mb-1.5">
+              {categoryLabel} · {project.year}
+            </div>
+            <h3 className="font-serif text-xl text-linen mb-1">
+              {project.title[lang]}
+            </h3>
+            {project.tagline && (
+              <motion.p
+                className="text-[12px] text-bone/50 font-light leading-[1.6]"
+                style={{ opacity: taglineOpacity }}
+              >
+                {project.tagline[lang].split("\n")[0]}
+              </motion.p>
+            )}
+            <motion.div
+              className="h-px bg-az-light/30 mt-3 origin-left"
+              style={{ width: lineWidth }}
+            />
+          </motion.div>
+        </motion.div>
       </Link>
     </motion.div>
   );
@@ -106,9 +193,8 @@ function ProjectCard({
 
 export default function ProjectsShowcase() {
   const { lang, t } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
 
-  const showcase = projects.slice(0, 4);
+  const showcase = projects.slice(0, 5);
 
   const categoryLabels: Record<string, Record<"es" | "en", string>> = {
     residential: { es: "Residencial", en: "Residential" },
@@ -116,9 +202,9 @@ export default function ProjectsShowcase() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-white pt-24 pb-0 max-md:pt-16">
-      {/* Header with animated line */}
-      <div className="section-pad mb-12 max-md:mb-8">
+    <section className="bg-white pt-24 pb-0 max-md:pt-16">
+      {/* Header */}
+      <div className="section-pad mb-14 max-md:mb-10">
         <div className="flex items-end justify-between gap-8">
           <div>
             <motion.div
@@ -155,7 +241,7 @@ export default function ProjectsShowcase() {
           </motion.div>
         </div>
         <motion.div
-          className="h-px bg-bone/50 mt-8"
+          className="h-px bg-bone/40 mt-8"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
@@ -164,10 +250,10 @@ export default function ProjectsShowcase() {
         />
       </div>
 
-      {/* 2x2 grid of cinematic project cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px] bg-bone/30">
+      {/* Expanding project cards */}
+      <div className="flex flex-col gap-[3px]">
         {showcase.map((project, i) => (
-          <ProjectCard
+          <ExpandingProjectCard
             key={project.slug}
             project={project}
             index={i}
