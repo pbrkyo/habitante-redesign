@@ -25,6 +25,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
       <Link
         href={`/proyectos/${project.slug}`}
         className="group block relative overflow-hidden"
+        data-cursor="view"
       >
         <div className="aspect-[4/3] relative">
           <Image

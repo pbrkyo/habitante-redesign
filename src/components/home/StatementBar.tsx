@@ -3,53 +3,49 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease },
-  },
-};
-
 export default function StatementBar() {
   const { t } = useLanguage();
 
-  const items = [
-    t("sbar.1"),
-    t("sbar.2"),
-    t("sbar.3"),
-    t("sbar.4"),
-  ];
+  const items = [t("sbar.1"), t("sbar.2"), t("sbar.3"), t("sbar.4")];
+  const separator = (
+    <span className="mx-8 text-az-brand/30 text-lg select-none" aria-hidden>
+      ◆
+    </span>
+  );
+
+  const row = items.flatMap((item, i) => [
+    <span
+      key={`item-${i}`}
+      className="text-[12px] md:text-[13px] uppercase tracking-[0.14em] text-az-brand/70 whitespace-nowrap font-light"
+    >
+      {item}
+    </span>,
+    <span key={`sep-${i}`}>{separator}</span>,
+  ]);
+
+  const marqueeContent = (
+    <div className="flex items-center shrink-0">
+      {row}
+      {row}
+    </div>
+  );
 
   return (
-    <motion.div
-      className="bg-az-light section-pad py-5 flex max-md:flex-col items-center gap-12 max-md:gap-4 border-b border-az-mid/50"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-20px" }}
-    >
-      {items.map((item, i) => (
-        <motion.div key={i} className="flex items-center gap-3 flex-1 max-md:w-full" variants={itemVariants}>
-          {i > 0 && (
-            <div className="w-px h-6 bg-az-mid flex-shrink-0 max-md:hidden" />
-          )}
-          <div className="w-[3px] h-[3px] rounded-full bg-az-brand flex-shrink-0" />
-          <span className="text-[11px] text-az-brand/65 tracking-[0.04em]">
-            {item}
-          </span>
-        </motion.div>
-      ))}
-    </motion.div>
+    <div className="bg-az-light border-b border-az-mid/50 py-4 overflow-hidden">
+      <motion.div
+        className="flex"
+        animate={{ x: [0, "-50%"] }}
+        transition={{
+          x: {
+            duration: 30,
+            ease: "linear",
+            repeat: Infinity,
+          },
+        }}
+      >
+        {marqueeContent}
+        {marqueeContent}
+      </motion.div>
+    </div>
   );
 }

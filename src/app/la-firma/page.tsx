@@ -372,7 +372,7 @@ export default function LaFirmaPage() {
           </div>
 
           {/* Image that changes with accordion */}
-          <div className="relative aspect-[4/3] overflow-hidden hidden md:block">
+          <div className="relative aspect-[4/3] overflow-hidden hidden md:block" data-cursor="view">
             <AnimatePresence mode="wait">
               <motion.div
                 key={openTypology}

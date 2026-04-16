@@ -222,6 +222,7 @@ export default function FormaDeDisenarPage() {
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
                   style={{ backgroundImage: `url('${p.image}')` }}
+                  data-cursor="view"
                 />
               </motion.div>
 

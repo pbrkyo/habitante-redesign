@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const principles = [
@@ -11,22 +12,35 @@ const principles = [
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
-const quoteVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-};
+function HighlightWord({
+  word,
+  progress,
+  start,
+  end,
+  isEm,
+}: {
+  word: string;
+  progress: MotionValue<number>;
+  start: number;
+  end: number;
+  isEm?: boolean;
+}) {
+  const opacity = useTransform(progress, [start, end], [0.15, 1]);
+  const color = useTransform(
+    progress,
+    [start, end],
+    isEm ? ["rgba(27,82,166,0.2)", "rgba(27,82,166,1)"] : ["rgb(158,150,144)", "rgb(30,29,26)"]
+  );
 
-const lineVariants = {
-  hidden: { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    clipPath: "inset(0% 0 0 0)",
-    transition: { duration: 0.9, ease },
-  },
-};
+  return (
+    <motion.span
+      className={`inline-block mr-[0.3em] ${isEm ? "italic" : ""}`}
+      style={{ opacity, color }}
+    >
+      {word}
+    </motion.span>
+  );
+}
 
 const principleVariants = {
   hidden: {},
@@ -46,36 +60,44 @@ const rowVariants = {
 
 export default function Manifesto() {
   const { t } = useLanguage();
+  const quoteRef = useRef<HTMLDivElement>(null);
 
-  const quoteLines = [
-    t("mf.quote.1"),
-    t("mf.quote.2"),
-    t("mf.quote.3"),
-  ];
+  const { scrollYProgress } = useScroll({
+    target: quoteRef,
+    offset: ["start 0.85", "end 0.35"],
+  });
+
+  const quoteText = [t("mf.quote.1"), t("mf.quote.2"), t("mf.quote.3")].join(" ");
+  const emText = t("mf.quote.em");
+  const quoteWords = quoteText.split(" ");
+  const emWords = emText.split(" ");
+  const totalWords = quoteWords.length + emWords.length;
 
   return (
-    <section className="bg-white section-pad py-24 max-md:py-14 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-20 max-md:gap-10 items-center">
-      {/* Quote with line-by-line reveal */}
-      <motion.div
-        className="font-serif text-display-lg text-carbon leading-[1.38] overflow-hidden"
-        variants={quoteVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-      >
-        {quoteLines.map((line, i) => (
-          <div key={i} style={{ overflow: "hidden" }}>
-            <motion.div variants={lineVariants}>{line}</motion.div>
-          </div>
+    <section className="bg-white section-pad py-28 max-md:py-16 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-20 max-md:gap-12 items-center">
+      <div ref={quoteRef} className="font-serif text-display-lg leading-[1.38]">
+        {quoteWords.map((word, i) => (
+          <HighlightWord
+            key={`q-${i}`}
+            word={word}
+            progress={scrollYProgress}
+            start={i / (totalWords + 3)}
+            end={(i + 1.5) / (totalWords + 3)}
+          />
         ))}
-        <div style={{ overflow: "hidden" }}>
-          <motion.div variants={lineVariants}>
-            <em className="italic text-az-brand">{t("mf.quote.em")}</em>
-          </motion.div>
-        </div>
-      </motion.div>
+        <br />
+        {emWords.map((word, i) => (
+          <HighlightWord
+            key={`em-${i}`}
+            word={word}
+            progress={scrollYProgress}
+            start={(quoteWords.length + i) / (totalWords + 3)}
+            end={(quoteWords.length + i + 1.5) / (totalWords + 3)}
+            isEm
+          />
+        ))}
+      </div>
 
-      {/* Principles */}
       <motion.div
         className="flex flex-col"
         variants={principleVariants}
@@ -88,7 +110,7 @@ export default function Manifesto() {
             key={p.n}
             className="grid grid-cols-[36px_1fr] py-[22px] border-t border-bone/50 last:border-b last:border-bone/50 group cursor-default"
             variants={rowVariants}
-            whileHover={{ x: 4 }}
+            whileHover={{ x: 6 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             <span className="text-[11px] text-az-brand tracking-[0.1em] pt-0.5 transition-colors group-hover:text-az-deep">

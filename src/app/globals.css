@@ -19,7 +19,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  scroll-behavior: auto;
 }
 
 body {
@@ -28,9 +28,9 @@ body {
   color: var(--carbon);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Smooth image rendering */
 img {
   image-rendering: -webkit-optimize-contrast;
 }
@@ -39,6 +39,10 @@ img {
   h1, h2, h3, h4 {
     font-family: var(--font-serif), serif;
     font-weight: 400;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -71,4 +75,10 @@ img {
 ::selection {
   background-color: var(--az-light);
   color: var(--az-deep);
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }

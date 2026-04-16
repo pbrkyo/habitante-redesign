@@ -34,6 +34,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
           href={img}
           data-src={img}
           className="group relative overflow-hidden cursor-pointer"
+          data-cursor="view"
         >
           <Image
             src={img}
