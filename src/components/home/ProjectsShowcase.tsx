@@ -8,6 +8,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { projects } from "@/lib/data/projects";
 
 const easeWipe = [0.76, 0, 0.24, 1] as const;
+const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 function StackingProjectCard({
   project,
@@ -29,24 +30,23 @@ function StackingProjectCard({
     offset: ["start end", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.12, 1]);
-  const contentY = useTransform(scrollYProgress, [0.1, 0.4], [40, 0]);
-  const contentOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
-  const lineWidth = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "100%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.08, 1]);
+  const lineWidth = useTransform(scrollYProgress, [0.15, 0.5], ["0%", "100%"]);
 
-  const stickyOffset = index * 20;
+  const stickyOffset = index * 24;
 
   return (
     <div
       ref={cardRef}
-      className="h-[85vh] min-h-[500px] max-md:h-[70vh]"
+      className="h-[85vh] min-h-[520px] max-md:h-[70vh]"
       style={{ marginBottom: index < total - 1 ? "-15vh" : 0 }}
     >
       <div
-        className="sticky overflow-hidden group"
-        style={{ top: `${80 + stickyOffset}px`, height: "75vh", minHeight: "450px" }}
+        className="sticky overflow-hidden group rounded-sm"
+        style={{ top: `${80 + stickyOffset}px`, height: "75vh", minHeight: "460px" }}
       >
         <Link href={`/proyectos/${project.slug}`} className="block relative w-full h-full overflow-hidden">
+          {/* Image with subtle parallax zoom */}
           <motion.div className="absolute inset-0" style={{ scale: imageScale }}>
             <Image
               src={project.heroImage}
@@ -58,29 +58,33 @@ function StackingProjectCard({
             />
           </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 via-carbon/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-carbon/50 via-transparent to-transparent" />
+          {/* Gradients for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 via-carbon/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-carbon/40 via-transparent to-transparent" />
 
-          <motion.div
-            className="absolute top-6 right-8 md:right-12 font-serif text-[100px] md:text-[160px] text-white/[0.06] leading-none select-none pointer-events-none"
-          >
+          {/* Ghost index number */}
+          <div className="absolute top-6 right-8 md:right-12 font-serif text-[100px] md:text-[140px] text-white/[0.05] leading-none select-none pointer-events-none">
             0{index + 1}
-          </motion.div>
+          </div>
 
+          {/* Content — always visible, whileInView entrance */}
           <motion.div
             className="absolute bottom-0 left-0 right-0 p-8 md:p-14"
-            style={{ y: contentY, opacity: contentOpacity }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay: 0.1, ease }}
           >
             <div className="flex items-end justify-between gap-8">
               <div className="max-w-2xl">
                 <div className="text-[11px] tracking-[0.22em] uppercase text-[#8AABDC] mb-3">
                   {categoryLabel} · {project.year}
                 </div>
-                <h3 className="font-serif text-[28px] md:text-display-md text-linen mb-2 group-hover:translate-x-3 transition-transform duration-500">
+                <h3 className="font-serif text-[32px] md:text-[clamp(28px,3.5vw,42px)] text-white leading-[1.15] mb-3 group-hover:translate-x-3 transition-transform duration-500">
                   {project.title[lang]}
                 </h3>
                 {project.tagline && (
-                  <p className="text-[14px] text-bone/50 font-light leading-[1.7] max-w-lg">
+                  <p className="text-[14px] text-bone/60 font-light leading-[1.7] max-w-lg">
                     {project.tagline[lang].split("\n")[0]}
                   </p>
                 )}
@@ -91,13 +95,14 @@ function StackingProjectCard({
               </div>
 
               <div className="flex-shrink-0 mb-2 hidden md:block">
-                <span className="w-12 h-12 rounded-full border border-az-light/20 flex items-center justify-center text-az-light/40 group-hover:text-az-light group-hover:border-az-light/50 transition-all duration-500">
+                <span className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 text-lg group-hover:text-white group-hover:border-white/60 group-hover:bg-white/10 transition-all duration-500">
                   →
                 </span>
               </div>
             </div>
           </motion.div>
 
+          {/* Top accent line */}
           <motion.div
             className="absolute top-0 left-0 right-0 h-[3px] bg-az-brand origin-left"
             initial={{ scaleX: 0 }}
