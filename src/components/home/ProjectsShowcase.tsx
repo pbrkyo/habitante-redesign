@@ -45,7 +45,6 @@ function StackingProjectCard({
       <div
         className="sticky overflow-hidden group"
         style={{ top: `${80 + stickyOffset}px`, height: "75vh", minHeight: "450px" }}
-        data-cursor="view"
       >
         <Link href={`/proyectos/${project.slug}`} className="block relative w-full h-full overflow-hidden">
           <motion.div className="absolute inset-0" style={{ scale: imageScale }}>

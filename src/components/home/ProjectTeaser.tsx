@@ -27,7 +27,6 @@ export default function ProjectTeaser() {
     <section
       ref={sectionRef}
       className="relative h-[120vh] max-md:h-[100vh]"
-      data-cursor="view"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div

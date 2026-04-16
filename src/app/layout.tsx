@@ -5,7 +5,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import PageTransition from "@/components/layout/PageTransition";
-import CustomCursor from "@/components/layout/CustomCursor";
 import "./globals.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -133,7 +132,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <LanguageProvider>
-          <CustomCursor />
           <SmoothScroll />
           <Navbar />
           <PageTransition>
