@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
 const easeWipe = [0.76, 0, 0.24, 1] as const;
 
 function MagneticButton({ children, href }: { children: React.ReactNode; href: string }) {

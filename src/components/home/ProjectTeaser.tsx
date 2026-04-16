@@ -7,9 +7,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { projects } from "@/lib/data/projects";
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
-const easeWipe = [0.76, 0, 0.24, 1] as const;
-
 export default function ProjectTeaser() {
   const { lang, t } = useLanguage();
   const featured = projects[0];
