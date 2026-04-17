@@ -89,7 +89,7 @@ function StackingProjectCard({
                   </p>
                 )}
                 <motion.div
-                  className="h-px bg-az-light/30 mt-5 origin-left"
+                  className="h-px bg-white/20 mt-5 origin-left"
                   style={{ width: lineWidth }}
                 />
               </div>
@@ -104,7 +104,7 @@ function StackingProjectCard({
 
           {/* Top accent line */}
           <motion.div
-            className="absolute top-0 left-0 right-0 h-[3px] bg-az-brand origin-left"
+            className="absolute top-0 left-0 right-0 h-px bg-white/20 origin-left"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
