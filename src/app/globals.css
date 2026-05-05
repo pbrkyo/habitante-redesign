@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --carbon: #1E1D1A;
+  --carbon: #2D2D2D;
   --ink: #3A3830;
-  --sand: #9E9690;
+  --sand: #B5AAA0;
   --sand-lt: #C8C3BC;
-  --bone: #E8E4DE;
+  --bone: #D6D1CB;
   --linen: #F0EDE7;
   --cream: #F7F5F1;
   --white: #FDFCFA;
-  --az-deep: #0C3270;
-  --az-brand: #1B52A6;
+  --az-deep: #002B7F;
+  --az-brand: #1434CB;
   --az-electric: #2B3FD4;
   --az-light: #E8EEF8;
   --az-mid: #D0DCEF;

@@ -43,7 +43,11 @@ export const metadata: Metadata = {
   creator: "Habitante Arquitectura",
   publisher: "Habitante Arquitectura",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
@@ -94,7 +98,7 @@ const organizationSchema = {
   description:
     "Estudio de arquitectura boutique especializado en diseño residencial y comercial con alcance internacional.",
   url: siteUrl,
-  logo: `${siteUrl}/icons/habitante_logo_new.svg`,
+  logo: `${siteUrl}/icons/habitante-logo-stacked.png`,
   image: `${siteUrl}/images/og-image.jpg`,
   telephone: "+506 8311 7094",
   email: "info@habitante.co",

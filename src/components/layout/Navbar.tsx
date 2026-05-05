@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -42,13 +43,15 @@ export default function Navbar() {
         }}
         transition={{ duration: 0.3 }}
       >
-        <Link href="/" className="flex flex-col leading-tight group">
-          <span className="font-sans text-[11px] font-medium tracking-[0.24em] text-az-brand uppercase transition-opacity group-hover:opacity-80">
-            HABITANTE
-          </span>
-          <span className="text-[8px] tracking-[0.15em] text-[#4B73C4] font-light mt-[3px] opacity-80">
-            arquitectura
-          </span>
+        <Link href="/" className="group transition-opacity hover:opacity-80">
+          <Image
+            src="/icons/habitante-logo-stacked.png"
+            alt="Habitante Arquitectura"
+            width={505}
+            height={222}
+            className="h-[36px] w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

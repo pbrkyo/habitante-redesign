@@ -9,19 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        carbon: "#1E1D1A",
+        carbon: "#2D2D2D",
         ink: "#3A3830",
         sand: {
-          DEFAULT: "#9E9690",
+          DEFAULT: "#B5AAA0",
           light: "#C8C3BC",
         },
-        bone: "#E8E4DE",
+        bone: "#D6D1CB",
         linen: "#F0EDE7",
         cream: "#F7F5F1",
         white: "#FDFCFA",
         az: {
-          deep: "#0C3270",
-          brand: "#1B52A6",
+          deep: "#002B7F",
+          brand: "#1434CB",
           electric: "#2B3FD4",
           light: "#E8EEF8",
           mid: "#D0DCEF",

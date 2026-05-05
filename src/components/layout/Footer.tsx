@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
@@ -11,12 +12,13 @@ export default function Footer() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-bone/50">
         {/* Brand */}
         <div>
-          <div className="font-sans text-xs font-medium tracking-[0.22em] text-az-brand uppercase">
-            HABITANTE
-            <span className="block text-[10px] tracking-[0.15em] text-[#4B73C4] font-light mt-[3px]">
-              arquitectura
-            </span>
-          </div>
+          <Image
+            src="/icons/habitante-logo-stacked.png"
+            alt="Habitante Arquitectura"
+            width={505}
+            height={222}
+            className="h-[48px] w-auto"
+          />
           <p className="text-sm text-ink/60 mt-4 italic leading-relaxed whitespace-pre-line">
             {t("ft.tagline")}
           </p>
