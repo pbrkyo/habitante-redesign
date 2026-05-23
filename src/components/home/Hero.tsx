@@ -73,12 +73,12 @@ export default function Hero() {
         style={{ y: bgY, scale: bgScale }}
       >
         <Image
-          src="/images/projects/casa-descalzo/casa-descalzo-01.jpg"
-          alt="Casa Descalzo — Habitante Arquitectura"
+          src="/images/hero-slider1.webp"
+          alt="Habitante Arquitectura"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center md:object-[center_35%]"
+          className="object-cover object-center"
         />
       </motion.div>
 
