@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --carbon: #2D2D2D;
+  /* Original palette — proven contrast ratios from the design brief */
+  --carbon: #1E1D1A;
   --ink: #3A3830;
-  --sand: #B5AAA0;
+  --sand: #9E9690;
   --sand-lt: #C8C3BC;
-  --bone: #D6D1CB;
+  --bone: #E8E4DE;
   --linen: #F0EDE7;
   --cream: #F7F5F1;
   --white: #FDFCFA;
-  --az-deep: #002B7F;
-  --az-brand: #1434CB;
+  --az-deep: #0C3270;
+  --az-brand: #1B52A6;
   --az-electric: #2B3FD4;
   --az-light: #E8EEF8;
   --az-mid: #D0DCEF;
@@ -26,6 +27,9 @@ body {
   font-family: var(--font-sans), sans-serif;
   background-color: var(--white);
   color: var(--carbon);
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -48,11 +52,11 @@ img {
 
 @layer components {
   .label-upper {
-    @apply text-[11px] uppercase tracking-label;
+    @apply text-[11px] font-medium uppercase tracking-label text-sand;
   }
 
   .nav-link {
-    @apply text-[11px] uppercase tracking-nav text-ink/70 transition-colors duration-200 hover:text-carbon;
+    @apply text-[11px] font-medium uppercase tracking-nav text-ink/80 transition-colors duration-200 hover:text-carbon;
   }
 
   .section-pad {
@@ -63,12 +67,17 @@ img {
     border-width: 0.5px;
   }
 
+  /* Readable body text helper — use on paragraphs and descriptive text */
+  .body-text {
+    @apply text-[15px] text-ink leading-[1.85] font-normal;
+  }
+
   .btn-primary {
-    @apply text-xs uppercase tracking-[0.14em] text-white bg-az-brand border-none py-[17px] px-11 rounded-sm cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-az-deep;
+    @apply text-[11px] font-medium uppercase tracking-[0.14em] text-white bg-az-brand border-none py-[17px] px-11 rounded-sm cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-az-deep;
   }
 
   .btn-outline {
-    @apply text-[11px] uppercase tracking-[0.1em] text-az-brand border border-az-brand/40 py-[7px] px-[18px] rounded-sm cursor-pointer transition-all duration-200 hover:bg-az-light;
+    @apply text-[11px] font-medium uppercase tracking-[0.1em] text-az-brand border border-az-brand/40 py-[7px] px-[18px] rounded-sm cursor-pointer transition-all duration-200 hover:bg-az-light;
   }
 }
 
