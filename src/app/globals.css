@@ -81,4 +81,9 @@ img {
   .perspective-1000 {
     perspective: 1000px;
   }
+
+  /* Mobile-safe viewport height — accounts for browser chrome on iOS/Android */
+  .h-screen-safe {
+    height: 100svh;
+  }
 }

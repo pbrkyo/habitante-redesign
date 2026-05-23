@@ -58,19 +58,17 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[100vh] min-h-[700px] overflow-hidden flex items-end bg-carbon"
+      className="relative h-screen h-screen-safe min-h-[600px] overflow-hidden flex items-end bg-carbon"
     >
+      {/* Background — Unsplash reliable CDN, no hotlink issues */}
       <motion.div
         className="absolute inset-0 bg-cover bg-[center_35%]"
         style={{
           backgroundImage:
-            "url('https://www.habitante.co/wp-content/uploads/2025/12/slider1.webp')",
+            "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=85')",
           y: bgY,
           scale: bgScale,
         }}
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1.03 }}
-        transition={{ duration: 14, ease: "easeOut" }}
       />
 
       <motion.div

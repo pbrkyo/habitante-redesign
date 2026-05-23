@@ -24,25 +24,26 @@ export default function NeuroSection() {
   return (
     <section ref={sectionRef} className="relative min-h-[700px] max-md:min-h-0">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Sticky image side */}
+        {/* Image side — natural light / human scale interior */}
         <div className="md:sticky md:top-16 md:h-screen relative overflow-hidden min-h-[400px] md:min-h-0">
           <motion.div
             className="absolute inset-[-12%] bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage:
-                "url('https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_03.png')",
+                "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85')",
               y: imageY,
               scale: imageScale,
             }}
           />
+          {/* Clip reveal — slides away on scroll into view */}
           <motion.div
             className="absolute inset-0 bg-az-brand origin-left"
             initial={{ scaleX: 1 }}
             whileInView={{ scaleX: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, ease: easeWipe }}
+            viewport={{ once: true, margin: "0px" }}
+            transition={{ duration: 1.1, ease: easeWipe }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-az-brand/20 hidden md:block" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-az-brand/15 hidden md:block" />
         </div>
 
         {/* Scrollable content side */}

@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import PageTransition from "@/components/layout/PageTransition";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -142,6 +143,7 @@ export default function RootLayout({
             <main>{children}</main>
           </PageTransition>
           <Footer />
+          <WhatsAppButton />
         </LanguageProvider>
       </body>
     </html>
