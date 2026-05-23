@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -145,6 +146,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppButton />
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
