@@ -43,28 +43,26 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    "w-full bg-transparent border-b border-bone/50 focus:border-az-brand py-3 text-sm text-carbon placeholder:text-sand-light/60 outline-none transition-colors duration-200";
+    "w-full bg-transparent border-b-2 border-bone focus:border-az-brand py-3 text-[15px] text-carbon font-normal placeholder:text-sand/70 outline-none transition-colors duration-200";
+
+  const labelClass = "block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/60 mb-2";
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-7">
       <div>
-        <label className="label-upper text-sand-light mb-2 block">
-          {t("contact.name")}
-        </label>
+        <label className={labelClass}>{t("contact.name")}</label>
         <input
           {...register("name", { required: true })}
           className={inputClass}
           placeholder={t("contact.name")}
         />
         {errors.name && (
-          <span className="text-[10px] text-red-500 mt-1">Required</span>
+          <span className="text-[11px] text-red-500 mt-1.5 block">Required</span>
         )}
       </div>
 
       <div>
-        <label className="label-upper text-sand-light mb-2 block">
-          {t("contact.email")}
-        </label>
+        <label className={labelClass}>{t("contact.email")}</label>
         <input
           type="email"
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
@@ -72,14 +70,12 @@ export default function ContactForm() {
           placeholder="email@example.com"
         />
         {errors.email && (
-          <span className="text-[10px] text-red-500 mt-1">Valid email required</span>
+          <span className="text-[11px] text-red-500 mt-1.5 block">Valid email required</span>
         )}
       </div>
 
       <div>
-        <label className="label-upper text-sand-light mb-2 block">
-          {t("contact.type")}
-        </label>
+        <label className={labelClass}>{t("contact.type")}</label>
         <select
           {...register("projectType", { required: true })}
           className={`${inputClass} cursor-pointer`}
@@ -92,9 +88,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="label-upper text-sand-light mb-2 block">
-          {t("contact.location")}
-        </label>
+        <label className={labelClass}>{t("contact.location")}</label>
         <input
           {...register("location")}
           className={inputClass}
@@ -103,37 +97,33 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="label-upper text-sand-light mb-2 block">
-          {t("contact.message")}
-        </label>
+        <label className={labelClass}>{t("contact.message")}</label>
         <textarea
           {...register("message", { required: true })}
           rows={5}
-          className={`${inputClass} resize-none`}
+          className={`${inputClass} resize-none leading-relaxed`}
           placeholder={t("contact.message.placeholder")}
         />
         {errors.message && (
-          <span className="text-[10px] text-red-500 mt-1">Required</span>
+          <span className="text-[11px] text-red-500 mt-1.5 block">Required</span>
         )}
       </div>
 
-      <div>
+      <div className="pt-2">
         <button
           type="submit"
           disabled={status === "sending"}
-          className="btn-primary disabled:opacity-50"
+          className="btn-primary disabled:opacity-50 w-full md:w-auto"
         >
-          {status === "sending"
-            ? "..."
-            : t("contact.submit")}
+          {status === "sending" ? "..." : t("contact.submit")}
         </button>
       </div>
 
       {status === "success" && (
-        <p className="text-xs text-az-brand">{t("contact.success")}</p>
+        <p className="text-[14px] text-az-brand font-medium">{t("contact.success")}</p>
       )}
       {status === "error" && (
-        <p className="text-xs text-red-500">{t("contact.error")}</p>
+        <p className="text-[14px] text-red-600">{t("contact.error")}</p>
       )}
     </form>
   );

@@ -55,9 +55,9 @@ const nextConfig = {
       { source: '/en/portfolio/descalzo-house', destination: '/proyectos/casa-descalzo', permanent: true },
       { source: '/en/portfolio/:slug', destination: '/proyectos', permanent: true },
 
-      // Catch-all for any remaining /es/* or /en/* paths
-      { source: '/es/:path*', destination: '/:path*', permanent: true },
-      { source: '/en/:path*', destination: '/:path*', permanent: true },
+      // Fallback for any remaining /es/* or /en/* paths not matched above
+      { source: '/es/:path*', destination: '/', permanent: true },
+      { source: '/en/:path*', destination: '/', permanent: true },
     ];
   },
 };
