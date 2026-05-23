@@ -16,23 +16,29 @@ function WordReveal({
   className?: string;
   delay?: number;
 }) {
-  const words = text.split(" ");
+  // filter(Boolean) removes any empty strings from leading/trailing spaces
+  const words = text.split(" ").filter(Boolean);
   return (
     <span className={className}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.28em]">
-          <motion.span
-            className="inline-block"
-            initial={{ y: "110%", rotateX: -40 }}
-            animate={{ y: "0%", rotateX: 0 }}
-            transition={{
-              duration: 0.9,
-              ease: easeWipe,
-              delay: delay + i * 0.06,
-            }}
-          >
-            {word}
-          </motion.span>
+        <span key={i}>
+          {/* overflow-hidden clips the slide-up animation */}
+          <span className="inline-block overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ y: "110%", rotateX: -40 }}
+              animate={{ y: "0%", rotateX: 0 }}
+              transition={{
+                duration: 0.9,
+                ease: easeWipe,
+                delay: delay + i * 0.06,
+              }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {/* Natural space character between words — no CSS margin tricks */}
+          {i < words.length - 1 && " "}
         </span>
       ))}
     </span>
@@ -113,7 +119,9 @@ export default function Hero() {
           <WordReveal text={t("hero.title.line1")} delay={0.4} />
           <br />
           <WordReveal text={t("hero.title.line2")} delay={0.7} />
-          <span className="inline-block overflow-hidden ml-[0.18em]">
+          {/* Single real space before the italic — consistent with natural word spacing */}
+          {" "}
+          <span className="inline-block overflow-hidden">
             <motion.em
               className="italic text-az-light inline-block"
               initial={{ y: "110%", rotateX: -40 }}
