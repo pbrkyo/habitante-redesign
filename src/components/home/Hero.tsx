@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -66,16 +67,20 @@ export default function Hero() {
       ref={sectionRef}
       className="relative h-screen h-screen-safe min-h-[600px] overflow-hidden flex items-end bg-carbon"
     >
-      {/* Background — Unsplash reliable CDN, no hotlink issues */}
+      {/* Background — actual Habitante project photography, served locally */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-[center_35%]"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=85')",
-          y: bgY,
-          scale: bgScale,
-        }}
-      />
+        className="absolute inset-0"
+        style={{ y: bgY, scale: bgScale }}
+      >
+        <Image
+          src="/images/projects/casa-descalzo/casa-descalzo-01.jpg"
+          alt="Casa Descalzo — Habitante Arquitectura"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center md:object-[center_35%]"
+        />
+      </motion.div>
 
       <motion.div
         className="absolute inset-0"
@@ -134,7 +139,7 @@ export default function Hero() {
         </h1>
 
         <motion.p
-          className="text-[15px] text-bone/80 leading-[1.9] max-w-[420px] font-light"
+          className="text-[15px] text-bone/90 leading-[1.9] max-w-[420px] font-normal"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2, ease }}
