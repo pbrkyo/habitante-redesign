@@ -12,7 +12,7 @@ export const translations: Translations = {
     // Hero
     "hero.eyebrow": "Práctica internacional de autor",
     "hero.title.line1": "Arquitectura para",
-    "hero.title.line2": "quien ",
+    "hero.title.line2": "quien",
     "hero.title.em": "la habita.",
     "hero.subtitle":
       "Diseñamos desde la experiencia humana, no desde la forma. Cada proyecto es un reflejo de quien lo vivirá.",
@@ -158,7 +158,7 @@ export const translations: Translations = {
     // Hero
     "hero.eyebrow": "International author practice",
     "hero.title.line1": "Architecture for",
-    "hero.title.line2": "those who ",
+    "hero.title.line2": "those who",
     "hero.title.em": "inhabit it.",
     "hero.subtitle":
       "We design from human experience, not from form. Every project is a reflection of who will live it.",

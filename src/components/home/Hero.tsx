@@ -113,7 +113,7 @@ export default function Hero() {
           <WordReveal text={t("hero.title.line1")} delay={0.4} />
           <br />
           <WordReveal text={t("hero.title.line2")} delay={0.7} />
-          <span className="inline-block overflow-hidden ml-[0.28em]">
+          <span className="inline-block overflow-hidden ml-[0.18em]">
             <motion.em
               className="italic text-az-light inline-block"
               initial={{ y: "110%", rotateX: -40 }}
