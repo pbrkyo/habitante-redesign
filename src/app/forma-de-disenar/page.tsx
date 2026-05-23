@@ -123,7 +123,7 @@ export default function FormaDeDisenarPage() {
           style={{ y: heroTextY, opacity: heroOpacity }}
         >
           <motion.div
-            className="label-upper text-sand-light mb-4"
+            className="label-upper mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -141,7 +141,7 @@ export default function FormaDeDisenarPage() {
           </motion.h1>
 
           <motion.p
-            className="text-base text-ink/65 font-light leading-[1.9] max-w-xl"
+            className="text-base text-ink/80 font-normal leading-[1.9] max-w-xl"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -169,7 +169,7 @@ export default function FormaDeDisenarPage() {
           <div className="flex items-end gap-8 mb-6">
             <div>
               <motion.div
-                className="label-upper text-sand-light mb-3"
+                className="label-upper mb-3"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -243,7 +243,7 @@ export default function FormaDeDisenarPage() {
                   <h3 className="font-serif text-display-sm text-carbon mb-4">
                     {lang === "es" ? p.titleEs : p.titleEn}
                   </h3>
-                  <p className="text-sm text-ink/65 leading-[1.95] max-w-md">
+                  <p className="text-sm text-ink/80 leading-[1.95] max-w-md">
                     {lang === "es" ? p.descEs : p.descEn}
                   </p>
                 </motion.div>
@@ -258,13 +258,13 @@ export default function FormaDeDisenarPage() {
         <div className="flex items-end gap-8 mb-20">
           <div>
             <motion.div
-              className="label-upper text-sand-light mb-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              {lang === "es" ? "Proceso" : "Process"}
+                className="label-upper mb-3"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                {lang === "es" ? "Proceso" : "Process"}
             </motion.div>
             <motion.h2
               className="font-serif text-display-md text-carbon"
@@ -329,7 +329,7 @@ export default function FormaDeDisenarPage() {
                     {lang === "es" ? step.titleEs : step.titleEn}
                   </h3>
                 </div>
-                <p className="text-sm text-ink/65 leading-[1.9]">
+                <p className="text-sm text-ink/80 leading-[1.9]">
                   {lang === "es" ? step.descEs : step.descEn}
                 </p>
               </div>
@@ -375,7 +375,7 @@ export default function FormaDeDisenarPage() {
               <br />
               <em className="italic text-[#A8C0E8]">{t("nr.title.em")}</em>
             </h2>
-            <p className="text-sm text-az-light/85 leading-[1.85] font-light">
+            <p className="text-sm text-az-light/90 leading-[1.85] font-normal">
               {t("nr.body")}
             </p>
           </motion.div>

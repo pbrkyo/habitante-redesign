@@ -48,7 +48,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
             className="max-w-[780px]"
           >
             {section.label && (
-              <div className="label-upper text-sand-light mb-5">{section.label[lang]}</div>
+              <div className="label-upper mb-5">{section.label[lang]}</div>
             )}
             {section.lead && (
               <p className="font-serif text-display-md text-carbon leading-[1.4] mb-8">
@@ -56,7 +56,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
               </p>
             )}
             {section.body && (
-              <div className="text-[15px] text-ink/80 leading-[1.9] font-light space-y-5">
+              <div className="text-[15px] text-ink/80 leading-[1.9] font-normal space-y-5">
                 {section.body[lang].split("\n\n").map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -82,7 +82,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
               </blockquote>
             )}
             {section.body && (
-              <div className={`text-[15px] leading-[1.9] font-light space-y-5 ${section.bgDark ? "text-bone/75" : "text-ink/75"}`}>
+              <div className={`text-[15px] leading-[1.9] font-normal space-y-5 ${section.bgDark ? "text-bone/85" : "text-ink/80"}`}>
                 {section.body[lang].split("\n\n").map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -103,10 +103,10 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
         >
           <div className="flex items-baseline justify-between mb-6">
             {section.label && (
-              <div className="label-upper text-sand-light">{section.label[lang]}</div>
+              <div className="label-upper">{section.label[lang]}</div>
             )}
             {section.credit && (
-              <div className="text-xs text-sand/60">{section.credit}</div>
+              <div className="text-sm text-ink/70">{section.credit}</div>
             )}
           </div>
           {section.images && (
@@ -126,7 +126,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
             className="max-w-[780px]"
           >
             {section.label && (
-              <div className="label-upper text-sand-light mb-5">{section.label[lang]}</div>
+              <div className="label-upper mb-5">{section.label[lang]}</div>
             )}
             {section.title && (
               <h2 className="font-serif text-display-sm text-carbon leading-[1.3] mb-5">
@@ -134,7 +134,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
               </h2>
             )}
             {section.body && (
-              <div className="text-[15px] text-ink/80 leading-[1.9] font-light space-y-5">
+              <div className="text-[15px] text-ink/80 leading-[1.9] font-normal space-y-5">
                 {section.body[lang].split("\n\n").map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -155,7 +155,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
             className="max-w-[780px]"
           >
             {section.label && (
-              <div className={`label-upper mb-5 ${section.bgDark ? "text-bone/40" : "text-sand-light"}`}>
+              <div className={`label-upper mb-5 ${section.bgDark ? "text-bone/80" : ""}`}>
                 {section.label[lang]}
               </div>
             )}
@@ -165,7 +165,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
               </h2>
             )}
             {section.body && (
-              <div className={`text-[15px] leading-[1.9] font-light space-y-5 ${section.bgDark ? "text-bone/60" : "text-ink/80"}`}>
+              <div className={`text-[15px] leading-[1.9] font-normal space-y-5 ${section.bgDark ? "text-bone/85" : "text-ink/80"}`}>
                 {section.body[lang].split("\n\n").map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -180,7 +180,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
                       <strong className={`text-sm font-medium block mb-0.5 ${section.bgDark ? "text-bone" : "text-carbon"}`}>
                         {item.title[lang]}
                       </strong>
-                      <span className={`text-[13px] leading-[1.7] ${section.bgDark ? "text-bone/50" : "text-ink/60"}`}>
+                      <span className={`text-sm leading-[1.7] ${section.bgDark ? "text-bone/85" : "text-ink/75"}`}>
                         {item.text[lang]}
                       </span>
                     </div>
@@ -203,7 +203,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
             className="max-w-[780px]"
           >
             {section.label && (
-              <div className="label-upper text-az-brand/50 mb-5">{section.label[lang]}</div>
+              <div className="label-upper text-az-brand/80 mb-5">{section.label[lang]}</div>
             )}
             {section.title && (
               <h2 className="font-serif text-display-sm text-carbon leading-[1.3] mb-8">
@@ -219,7 +219,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
                       <strong className="text-sm font-medium text-carbon block mb-0.5">
                         {item.title[lang]}
                       </strong>
-                      <span className="text-[13px] text-ink/60 leading-[1.7]">
+                      <span className="text-sm text-ink/75 leading-[1.7]">
                         {item.text[lang]}
                       </span>
                     </div>
@@ -250,7 +250,7 @@ function SectionRenderer({ section, lang }: { section: ProjectSection; lang: Lan
             />
           )}
           {section.credit && (
-            <div className="absolute bottom-4 right-6 text-[11px] text-white/60 tracking-wide">
+            <div className="absolute bottom-4 right-6 text-sm text-white/85 tracking-wide">
               {section.credit}
             </div>
           )}
@@ -342,7 +342,7 @@ export default function ProjectDetailPage() {
             <motion.div variants={fadeUpVariants}>
               <Link
                 href="/proyectos"
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-nav text-linen/80 hover:text-linen transition-colors mb-6 min-h-[44px] py-2"
+                className="inline-flex items-center gap-2 text-sm uppercase tracking-nav text-linen/90 hover:text-linen transition-colors mb-6 min-h-[44px] py-2"
               >
                 <ArrowLeft size={16} />
                 {t("nav.projects")}
@@ -351,7 +351,7 @@ export default function ProjectDetailPage() {
 
             <motion.div
               variants={fadeUpVariants}
-              className="text-[11px] tracking-[0.2em] uppercase text-[#8AABDC] mb-2"
+              className="text-sm tracking-[0.2em] uppercase text-[#8AABDC] mb-2"
             >
               {categoryLabels[project.category]?.[lang]}
             </motion.div>
@@ -375,7 +375,7 @@ export default function ProjectDetailPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="label-upper text-sand-light mb-4">
+            <div className="label-upper mb-4">
               {categoryLabels[project.category]?.[lang]} · {project.city}
             </div>
             {project.tagline && (
@@ -393,7 +393,7 @@ export default function ProjectDetailPage() {
           >
             {project.ficha && (
               <div className="flex flex-col">
-                <div className="text-xs uppercase tracking-label text-carbon font-medium mb-4">
+                <div className="text-sm uppercase tracking-label text-carbon font-medium mb-4">
                   {lang === "es" ? "Ficha del proyecto" : "Project sheet"}
                 </div>
                 {project.ficha.map((item, i) => (
@@ -401,7 +401,7 @@ export default function ProjectDetailPage() {
                     key={i}
                     className="flex justify-between py-3 border-b border-bone/40 text-sm"
                   >
-                    <span className="text-sand">{item.label[lang]}</span>
+                    <span className="text-ink/70">{item.label[lang]}</span>
                     <span className="text-carbon text-right">{item.value[lang]}</span>
                   </div>
                 ))}
@@ -418,7 +418,7 @@ export default function ProjectDetailPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-base text-ink/80 leading-[1.9] font-light">
+            <p className="text-base text-ink/80 leading-[1.9] font-normal">
               {project.description[lang]}
             </p>
           </motion.div>
@@ -431,7 +431,7 @@ export default function ProjectDetailPage() {
           >
             <div className="flex items-center gap-3 py-3 border-b border-bone/50">
               <div>
-                <div className="text-[11px] uppercase tracking-label text-sand">
+                  <div className="text-sm uppercase tracking-label text-ink/70">
                   {lang === "es" ? "Ubicación" : "Location"}
                 </div>
                 <div className="text-sm text-carbon">{project.city}</div>
@@ -440,7 +440,7 @@ export default function ProjectDetailPage() {
             {project.area && (
               <div className="flex items-center gap-3 py-3 border-b border-bone/50">
                 <div>
-                  <div className="text-[11px] uppercase tracking-label text-sand">
+                  <div className="text-sm uppercase tracking-label text-ink/70">
                     {lang === "es" ? "Área" : "Area"}
                   </div>
                   <div className="text-sm text-carbon">{project.area}</div>
@@ -449,7 +449,7 @@ export default function ProjectDetailPage() {
             )}
             <div className="flex items-center gap-3 py-3 border-b border-bone/50">
               <div>
-                <div className="text-[11px] uppercase tracking-label text-sand">
+                  <div className="text-sm uppercase tracking-label text-ink/70">
                   {lang === "es" ? "Año" : "Year"}
                 </div>
                 <div className="text-sm text-carbon">{project.year}</div>
@@ -474,7 +474,7 @@ export default function ProjectDetailPage() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
         >
-          <div className="label-upper text-sand-light mb-6">
+          <div className="label-upper mb-6">
             {lang === "es" ? "Galería" : "Gallery"}
           </div>
           <ProjectGallery images={project.images} title={project.title[lang]} />
@@ -489,7 +489,7 @@ export default function ProjectDetailPage() {
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <div className="label-upper text-bone/40 mb-2">
+              <div className="label-upper text-bone/80 mb-2">
                 {lang === "es" ? "Siguiente proyecto" : "Next project"}
               </div>
               <div className="font-serif text-display-sm text-linen group-hover:text-az-light transition-colors">
@@ -513,7 +513,7 @@ export default function ProjectDetailPage() {
             <Link href="/conversacion" className="btn-primary">
               {lang === "es" ? "Iniciar conversación" : "Start conversation"}
             </Link>
-            <span className="text-xs text-sand">
+            <span className="text-sm text-ink/70">
               {lang === "es" ? "Sin compromiso · Brief emocional inicial" : "No commitment · Initial emotional brief"}
             </span>
           </div>
@@ -524,7 +524,7 @@ export default function ProjectDetailPage() {
       {!nextProj && related.length > 0 && (
         <section className="bg-white section-pad py-16 border-t border-bone/50">
           <motion.div
-            className="label-upper text-sand-light mb-8"
+            className="label-upper mb-8"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -549,7 +549,7 @@ export default function ProjectDetailPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 group-hover:from-carbon/82 transition-all duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
+                  <div className="text-sm tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
                     {categoryLabels[rp.category]?.[lang]}
                   </div>
                   <div className="font-serif text-lg text-linen">{rp.title[lang]}</div>

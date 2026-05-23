@@ -115,7 +115,7 @@ export default function LaFirmaPage() {
           style={{ y: heroTextY, opacity: heroOpacity }}
         >
           <motion.div
-            className="label-upper text-sand-light mb-4"
+            className="label-upper mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -133,7 +133,7 @@ export default function LaFirmaPage() {
           </motion.h1>
 
           <motion.p
-            className="text-base text-ink/65 font-light leading-[1.9] max-w-xl"
+            className="text-base text-ink/80 font-normal leading-[1.9] max-w-xl"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -235,7 +235,7 @@ export default function LaFirmaPage() {
         <div className="flex items-end gap-8 mb-16">
           <div>
             <motion.div
-              className="label-upper text-sand-light mb-3"
+              className="label-upper mb-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -281,7 +281,7 @@ export default function LaFirmaPage() {
               <h3 className="font-serif text-xl text-carbon mb-3 transition-colors group-hover:text-az-brand duration-300">
                 {lang === "es" ? v.titleEs : v.titleEn}
               </h3>
-              <p className="text-sm text-ink/65 leading-[1.9]">
+              <p className="text-sm text-ink/80 leading-[1.9]">
                 {lang === "es" ? v.descEs : v.descEn}
               </p>
             </motion.div>
@@ -292,7 +292,7 @@ export default function LaFirmaPage() {
       {/* ─── Typologies: accordion with image reveal ─── */}
       <section className="bg-az-deep section-pad py-24 max-md:py-16">
         <motion.div
-          className="label-upper text-az-mid/60 mb-3"
+          className="label-upper text-az-light/85 mb-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -331,12 +331,12 @@ export default function LaFirmaPage() {
                 >
                   <div className="flex items-center justify-between py-6 px-4">
                     <div className="flex items-center gap-4">
-                      <span className="text-[11px] text-az-mid/40 tracking-[0.1em] font-light">
+                      <span className="text-sm text-az-light/85 tracking-[0.1em] font-normal">
                         0{i + 1}
                       </span>
                       <h3
                         className={`font-serif text-lg transition-colors duration-300 ${
-                          isOpen ? "text-linen" : "text-az-mid/70"
+                          isOpen ? "text-linen" : "text-az-light/85"
                         }`}
                       >
                         {lang === "es" ? typ.titleEs : typ.titleEn}
@@ -345,7 +345,7 @@ export default function LaFirmaPage() {
                     <motion.div
                       animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="text-az-mid/50 text-lg"
+                      className="text-az-light/80 text-lg"
                     >
                       +
                     </motion.div>
@@ -359,7 +359,7 @@ export default function LaFirmaPage() {
                         transition={{ duration: 0.4, ease }}
                         className="overflow-hidden"
                       >
-                        <p className="text-sm text-az-mid/70 leading-[1.9] px-4 pb-6 pl-[52px]">
+                        <p className="text-sm text-az-light/90 leading-[1.9] px-4 pb-6 pl-[52px]">
                           {lang === "es" ? typ.descEs : typ.descEn}
                         </p>
                       </motion.div>

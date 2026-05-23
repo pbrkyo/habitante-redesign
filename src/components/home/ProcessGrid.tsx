@@ -23,7 +23,7 @@ export default function ProcessGrid() {
       <div className="flex items-end gap-8 mb-16 max-md:mb-10">
         <div>
           <motion.div
-            className="label-upper text-sand-light mb-3"
+            className="label-upper mb-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -97,7 +97,7 @@ export default function ProcessGrid() {
                 >
                   <span
                     className={`text-lg leading-none transition-colors duration-300 ${
-                      isOpen ? "text-az-brand" : "text-sand-light"
+                      isOpen ? "text-az-brand" : "text-ink/60"
                     }`}
                   >
                     +
@@ -121,7 +121,7 @@ export default function ProcessGrid() {
                         animate={{ scaleX: 1 }}
                         transition={{ duration: 0.8, ease: easeWipe, delay: 0.1 }}
                       />
-                      <p className="text-sm text-ink/70 leading-[1.9] max-w-lg">
+                      <p className="text-sm text-ink/80 leading-[1.9] max-w-lg">
                         {t(step.descKey)}
                       </p>
                     </div>

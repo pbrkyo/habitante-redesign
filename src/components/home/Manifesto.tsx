@@ -113,14 +113,14 @@ export default function Manifesto() {
             whileHover={{ x: 6 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
-            <span className="text-[11px] text-az-brand tracking-[0.1em] pt-0.5 transition-colors group-hover:text-az-deep">
+            <span className="text-sm text-az-brand tracking-[0.1em] pt-0.5 transition-colors group-hover:text-az-deep">
               {p.n}
             </span>
             <div>
               <div className="text-sm font-medium text-carbon mb-2 transition-colors group-hover:text-az-brand">
                 {t(p.titleKey)}
               </div>
-              <div className="text-sm text-ink/70 leading-[1.8]">
+              <div className="text-sm text-ink/80 leading-[1.8]">
                 {t(p.descKey)}
               </div>
             </div>

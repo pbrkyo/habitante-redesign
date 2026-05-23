@@ -10,7 +10,7 @@ export default function StatementBar() {
   const row = items.flatMap((item, i) => [
     <span
       key={`item-${i}`}
-      className="text-[12px] md:text-[13px] uppercase tracking-[0.14em] text-az-brand/70 whitespace-nowrap font-light"
+      className="text-sm uppercase tracking-[0.14em] text-az-brand/85 whitespace-nowrap font-normal"
     >
       {item}
     </span>,

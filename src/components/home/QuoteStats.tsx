@@ -114,7 +114,7 @@ export default function QuoteStats() {
               </div>
               <div className="text-sm text-ink/80 leading-[1.5]">
                 {t(stat.labelKey)}
-                <small className="block text-[11px] text-ink/55 mt-1.5 tracking-[0.04em]">
+                <small className="block text-[13px] text-ink/70 mt-1.5 tracking-[0.04em]">
                   {t(stat.subKey)}
                 </small>
               </div>

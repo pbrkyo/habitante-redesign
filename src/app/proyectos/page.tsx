@@ -45,13 +45,13 @@ export default function ProjectsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="label-upper text-sand-light mb-3">
+          <div className="label-upper mb-3">
             {t("proy.label")}
           </div>
           <h1 className="font-serif text-display-lg text-carbon mb-8">
             {t("projects.title")}
           </h1>
-          <p className="text-sm text-ink/70 font-light max-w-md mb-10">
+          <p className="text-sm text-ink/80 font-normal max-w-md mb-10">
             {t("projects.subtitle")}
           </p>
           <ProjectFilter active={filter} onChange={setFilter} />

@@ -36,7 +36,7 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon/70 to-carbon/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <div className="text-[11px] tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
+            <div className="text-sm tracking-[0.18em] uppercase text-[#8AABDC] mb-1">
               {categoryLabels[project.category]?.[lang]}
             </div>
             <div className="font-serif text-base text-linen">
@@ -46,13 +46,13 @@ export default function ProjectCard({ project, lang }: ProjectCardProps) {
         </div>
 
         <div className="pt-4 pb-6">
-          <div className="text-[11px] tracking-[0.14em] uppercase text-sand mb-1.5">
+          <div className="text-sm tracking-[0.14em] uppercase text-ink/70 mb-1.5">
             {categoryLabels[project.category]?.[lang]} · {project.city}
           </div>
           <h3 className="font-serif text-lg text-carbon group-hover:text-az-brand transition-colors duration-200">
             {project.title[lang]}
           </h3>
-          <p className="text-sm text-ink/65 mt-2 leading-[1.75] line-clamp-2">
+          <p className="text-sm text-ink/80 mt-2 leading-[1.75] line-clamp-2">
             {project.description[lang]}
           </p>
         </div>

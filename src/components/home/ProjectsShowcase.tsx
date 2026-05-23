@@ -77,14 +77,14 @@ function StackingProjectCard({
           >
             <div className="flex items-end justify-between gap-8">
               <div className="max-w-2xl">
-                <div className="text-[11px] tracking-[0.22em] uppercase text-[#8AABDC] mb-3">
+                <div className="text-sm tracking-[0.22em] uppercase text-[#8AABDC] mb-3">
                   {categoryLabel} · {project.year}
                 </div>
                 <h3 className="font-serif text-[32px] md:text-[clamp(28px,3.5vw,42px)] text-white leading-[1.15] mb-3 group-hover:translate-x-3 transition-transform duration-500">
                   {project.title[lang]}
                 </h3>
                 {project.tagline && (
-                  <p className="text-[14px] text-bone/60 font-light leading-[1.7] max-w-lg">
+                  <p className="text-sm text-bone/85 font-normal leading-[1.7] max-w-lg">
                     {project.tagline[lang].split("\n")[0]}
                   </p>
                 )}
@@ -131,7 +131,7 @@ export default function ProjectsShowcase() {
         <div className="flex items-end justify-between gap-8">
           <div>
             <motion.div
-              className="label-upper text-sand/60 mb-2"
+              className="label-upper text-bone/80 mb-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -157,7 +157,7 @@ export default function ProjectsShowcase() {
           >
             <Link
               href="/proyectos"
-              className="label-upper text-az-light/70 border-b border-az-light/30 pb-0.5 cursor-pointer hover:text-az-light hover:border-az-light/60 transition-colors whitespace-nowrap min-h-[44px] inline-flex items-center"
+              className="label-upper text-az-light/90 border-b border-az-light/50 pb-0.5 cursor-pointer hover:text-az-light hover:border-az-light/80 transition-colors whitespace-nowrap min-h-[44px] inline-flex items-center"
             >
               {t("proy.viewAll")} →
             </Link>

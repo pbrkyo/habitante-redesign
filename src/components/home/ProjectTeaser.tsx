@@ -51,7 +51,7 @@ export default function ProjectTeaser() {
           className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 section-pad"
           style={{ y: textY, opacity: textOpacity }}
         >
-          <motion.div className="label-upper text-az-light/70 mb-4">
+          <motion.div className="label-upper text-az-light/90 mb-4">
             {t("teaser.label")}
           </motion.div>
 
@@ -59,7 +59,7 @@ export default function ProjectTeaser() {
             {t("teaser.title")}
           </h2>
 
-          <p className="text-[15px] text-bone/60 leading-[1.85] max-w-md font-light mb-8">
+          <p className="text-[15px] text-bone/85 leading-[1.85] max-w-md font-normal mb-8">
             {t("teaser.desc")}
           </p>
 

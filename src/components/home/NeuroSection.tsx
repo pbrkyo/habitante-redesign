@@ -55,7 +55,7 @@ export default function NeuroSection() {
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="label-upper text-az-mid/70 mb-4"
+              className="label-upper text-az-light/85 mb-4"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -88,7 +88,7 @@ export default function NeuroSection() {
             />
 
             <motion.p
-              className="text-[15px] text-az-light/80 leading-[1.9] font-light mb-10"
+              className="text-[15px] text-az-light/90 leading-[1.9] font-normal mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -112,7 +112,7 @@ export default function NeuroSection() {
                     className="w-2 h-2 rounded-full bg-[#A8C0E8]/60 mt-[6px] flex-shrink-0 group-hover:bg-[#A8C0E8] transition-colors duration-300"
                     whileHover={{ scale: 1.4 }}
                   />
-                  <span className="text-[14px] text-az-light/75 leading-[1.7] group-hover:text-az-light/95 transition-colors duration-300">
+                  <span className="text-sm text-az-light/90 leading-[1.7] group-hover:text-az-light transition-colors duration-300">
                     {t(key)}
                   </span>
                 </motion.div>

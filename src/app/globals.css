@@ -52,7 +52,7 @@ img {
 
 @layer components {
   .label-upper {
-    @apply text-[11px] font-medium uppercase tracking-label text-sand;
+    @apply text-[13px] font-medium uppercase tracking-label text-ink/70;
   }
 
   .nav-link {

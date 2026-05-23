@@ -43,7 +43,7 @@ function MagneticButton({ children, href }: { children: React.ReactNode; href: s
       >
         <Link
           href={href}
-          className="inline-block text-[13px] uppercase tracking-[0.16em] text-carbon bg-cream border-none py-5 px-14 max-md:px-10 rounded-sm transition-colors duration-300 hover:bg-white font-medium"
+          className="inline-block text-sm uppercase tracking-[0.16em] text-carbon bg-cream border-none py-5 px-14 max-md:px-10 rounded-sm transition-colors duration-300 hover:bg-white font-medium"
         >
           {children}
         </Link>
@@ -79,7 +79,7 @@ export default function CTASection() {
 
       <div className="relative section-pad py-32 max-md:py-20 flex flex-col items-center text-center">
         <motion.div
-          className="label-upper text-sand/40 mb-6"
+          className="label-upper text-bone/75 mb-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -119,7 +119,7 @@ export default function CTASection() {
         </motion.div>
 
         <motion.span
-          className="text-[11px] text-sand/30 mt-4 tracking-[0.05em]"
+          className="text-sm text-bone/75 mt-4 tracking-[0.05em]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
