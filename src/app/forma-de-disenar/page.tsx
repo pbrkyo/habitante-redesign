@@ -17,7 +17,7 @@ const principles = [
     descEn:
       "Before any line, we understand who will inhabit the space. We don't start from an architectural program — we start from the client's life: their habits, emotions, and way of inhabiting the world.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_00.jpg",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85",
   },
   {
     n: "02",
@@ -28,7 +28,7 @@ const principles = [
     descEn:
       "Natural light is not ornament. It is the most powerful and silent material in design. Every space is oriented, opened, or closed based on how light will inhabit it throughout the day.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_04.png",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=85",
   },
   {
     n: "03",
@@ -39,7 +39,7 @@ const principles = [
     descEn:
       "Wood, stone, exposed concrete. Materials that have weight, touch, and age with dignity. We don't hide matter — we celebrate it. Every texture tells a story of the place.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Terrarossa_habitante_01.jpg",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85",
   },
   {
     n: "04",
@@ -50,7 +50,7 @@ const principles = [
     descEn:
       "Solar orientation, cross ventilation, controlled views. Architecture doesn't impose on the place — it responds to it. Every project is a conversation between design and site.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_03.jpg",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85",
   },
 ];
 
@@ -345,7 +345,7 @@ export default function FormaDeDisenarPage() {
             className="absolute inset-[-10%] bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage:
-                "url('https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_03.png')",
+                "url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=900&q=85')",
               y: neuroImageY,
             }}
           />

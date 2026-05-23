@@ -16,7 +16,7 @@ const typologies = [
     descEn:
       "Every home starts from an emotional brief. We don't design generic housing — we design the specific way a person or family wants to inhabit their space.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85",
   },
   {
     titleEs: "Espacios comerciales",
@@ -26,7 +26,7 @@ const typologies = [
     descEn:
       "Offices, restaurants, and workspaces where architecture enhances the user experience. The same author's rigor applied to commercial scale.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_01.jpg",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85",
   },
   {
     titleEs: "Proyectos especiales",
@@ -36,7 +36,7 @@ const typologies = [
     descEn:
       "Urban interventions, public spaces, and commissions that transcend conventional typology. Projects where architecture dialogues with the community.",
     image:
-      "https://www.habitante.co/wp-content/uploads/2024/04/Terrarossa_habitante_01.jpg",
+      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=900&q=85",
   },
 ];
 
@@ -159,11 +159,11 @@ export default function LaFirmaPage() {
       <section ref={imageStripRef} className="overflow-hidden py-1 bg-carbon">
         <motion.div className="flex gap-1" style={{ x: stripX }}>
           {[
-            "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_05.png",
-            "https://www.habitante.co/wp-content/uploads/2024/04/QatarHouse_Habitante_01.jpg",
-            "https://www.habitante.co/wp-content/uploads/2024/04/Terrarossa_habitante_01.jpg",
-            "https://www.habitante.co/wp-content/uploads/2024/04/Casa89_Habitante_4.jpg",
-            "https://www.habitante.co/wp-content/uploads/2024/04/Casa_Descalzo_Habitante_Arquitectura_03.png",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80",
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80",
+            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80",
+            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80",
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80",
           ].map((src, i) => (
             <div
               key={i}
