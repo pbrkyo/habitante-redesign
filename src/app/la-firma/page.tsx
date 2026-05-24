@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -228,6 +229,45 @@ export default function LaFirmaPage() {
             </p>
           </motion.div>
         </div>
+      </section>
+
+      {/* ─── Studio space ─── */}
+      <section className="bg-white border-t border-bone/50">
+        <motion.div
+          className="relative w-full h-[65vh] min-h-[380px] max-md:h-[50vw] max-md:min-h-[260px] overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <Image
+            src="/images/habitante-office.jpg"
+            alt="Habitante Arquitectura — Estudio"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Clip reveal */}
+          <motion.div
+            className="absolute inset-0 bg-linen origin-left"
+            initial={{ scaleX: 1 }}
+            whileInView={{ scaleX: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.2, ease: easeWipe, delay: 0.1 }}
+          />
+        </motion.div>
+        <motion.div
+          className="section-pad py-5 flex items-center justify-between border-b border-bone/50"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <span className="label-upper">
+            {lang === "es" ? "Nuestro estudio" : "Our studio"}
+          </span>
+          <span className="text-sm text-ink/70">San José, Costa Rica</span>
+        </motion.div>
       </section>
 
       {/* ─── Values: horizontal cards with hover depth ─── */}

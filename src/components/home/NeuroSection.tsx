@@ -30,7 +30,7 @@ export default function NeuroSection() {
             className="absolute inset-[-12%] bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85')",
+                "url('/images/habitante-neuroarchitecture.jpg')",
               y: imageY,
               scale: imageScale,
             }}

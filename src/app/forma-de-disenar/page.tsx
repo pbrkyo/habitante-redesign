@@ -345,7 +345,7 @@ export default function FormaDeDisenarPage() {
             className="absolute inset-[-10%] bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=900&q=85')",
+                "url('/images/habitante-neuroarchitecture-2.jpg')",
               y: neuroImageY,
             }}
           />

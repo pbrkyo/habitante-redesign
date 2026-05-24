@@ -73,7 +73,7 @@ export default function Hero() {
         style={{ y: bgY, scale: bgScale }}
       >
         <Image
-          src="/images/hero-slider1.webp"
+          src="/images/habitante-new-hero.jpg"
           alt="Habitante Arquitectura"
           fill
           priority
