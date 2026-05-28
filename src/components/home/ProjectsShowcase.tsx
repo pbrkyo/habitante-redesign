@@ -38,13 +38,13 @@ function StackingProjectCard({
   return (
     <div
       ref={cardRef}
-      className="h-[85vh] min-h-[520px] max-md:h-[88vh]"
+      className="h-[85vh] min-h-[520px] max-md:h-[calc(100svh-60px)]"
       style={{ marginBottom: index < total - 1 ? "-15vh" : 0 }}
     >
       {/* sticky on all viewports — this IS the stacking animation */}
       <div
-        className="sticky overflow-hidden group rounded-sm"
-        style={{ top: `${80 + stickyOffset}px`, height: "75vh", minHeight: "460px" }}
+        className="sticky overflow-hidden group rounded-sm h-[75vh] min-h-[460px] max-md:h-[calc(100svh-80px)] max-md:min-h-[400px]"
+        style={{ top: `${80 + stickyOffset}px` }}
       >
         <Link href={`/proyectos/${project.slug}`} className="block relative w-full h-full overflow-hidden">
           {/* Image with subtle parallax zoom */}
