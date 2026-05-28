@@ -86,16 +86,6 @@ img {
   color: var(--az-deep);
 }
 
-/* Stacking cards — negative margin only on desktop where sticky works */
-:root {
-  --stacking-card-mb: 0px;
-}
-@media (min-width: 768px) {
-  :root {
-    --stacking-card-mb: -15vh;
-  }
-}
-
 @layer utilities {
   .perspective-1000 {
     perspective: 1000px;

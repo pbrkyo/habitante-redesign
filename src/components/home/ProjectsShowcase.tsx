@@ -38,13 +38,13 @@ function StackingProjectCard({
   return (
     <div
       ref={cardRef}
-      className="h-[85vh] min-h-[520px] max-md:h-auto"
-      style={{ marginBottom: index < total - 1 ? "var(--stacking-card-mb)" : 0 }}
+      className="h-[85vh] min-h-[520px] max-md:h-[88vh]"
+      style={{ marginBottom: index < total - 1 ? "-15vh" : 0 }}
     >
-      {/* md:sticky — on mobile cards scroll normally, no overlap */}
+      {/* sticky on all viewports — this IS the stacking animation */}
       <div
-        className="md:sticky overflow-hidden group rounded-sm h-[75vh] min-h-[460px] max-md:h-[72vw] max-md:min-h-[280px] max-md:mb-4"
-        style={{ top: `${80 + stickyOffset}px` }}
+        className="sticky overflow-hidden group rounded-sm"
+        style={{ top: `${80 + stickyOffset}px`, height: "75vh", minHeight: "460px" }}
       >
         <Link href={`/proyectos/${project.slug}`} className="block relative w-full h-full overflow-hidden">
           {/* Image with subtle parallax zoom */}
@@ -59,8 +59,8 @@ function StackingProjectCard({
             />
           </motion.div>
 
-          {/* Gradients for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/35 to-transparent" />
+          {/* Gradients for text legibility — stronger on mobile */}
+          <div className="absolute inset-0 bg-gradient-to-t from-carbon/90 via-carbon/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-carbon/40 via-transparent to-transparent" />
 
           {/* Ghost index number */}
@@ -68,20 +68,14 @@ function StackingProjectCard({
             0{index + 1}
           </div>
 
-          {/* Content — always visible, whileInView entrance */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 p-6 md:p-14"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease }}
-          >
+          {/* Content — always visible, no whileInView so it never gets stuck hidden */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-14">
             <div className="flex items-end justify-between gap-4">
               <div className="max-w-2xl min-w-0">
-                <div className="text-[11px] md:text-sm tracking-[0.22em] uppercase text-[#8AABDC] mb-2 md:mb-3">
+                <div className="text-sm tracking-[0.22em] uppercase text-[#8AABDC] mb-2 md:mb-3">
                   {categoryLabel} · {project.year}
                 </div>
-                <h3 className="font-serif text-[22px] md:text-[clamp(28px,3.5vw,42px)] text-white leading-[1.15] mb-2 md:mb-3 group-hover:translate-x-3 transition-transform duration-500">
+                <h3 className="font-serif text-[24px] md:text-[clamp(28px,3.5vw,42px)] text-white leading-[1.15] mb-2 md:mb-3 group-hover:translate-x-3 transition-transform duration-500">
                   {project.title[lang]}
                 </h3>
                 {project.tagline && (
@@ -101,7 +95,7 @@ function StackingProjectCard({
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Top accent line */}
           <motion.div
