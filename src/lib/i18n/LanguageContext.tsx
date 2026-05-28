@@ -23,7 +23,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 import { translations } from "./translations";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>("es");
+  const [lang, setLangState] = useState<Language>("en");
 
   useEffect(() => {
     const stored = localStorage.getItem("habitante-lang") as Language | null;
