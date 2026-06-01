@@ -16,8 +16,7 @@ const typologies = [
       "Cada casa parte de un brief emocional. No diseñamos viviendas genéricas — diseñamos la forma específica en que una persona o familia quiere habitar su espacio.",
     descEn:
       "Every home starts from an emotional brief. We don't design generic housing — we design the specific way a person or family wants to inhabit their space.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85",
+    image: "/images/typology-residential.jpg",
   },
   {
     titleEs: "Espacios comerciales",
@@ -26,8 +25,7 @@ const typologies = [
       "Oficinas, restaurantes y espacios de trabajo donde la arquitectura potencia la experiencia del usuario. El mismo rigor de autor aplicado a la escala comercial.",
     descEn:
       "Offices, restaurants, and workspaces where architecture enhances the user experience. The same author's rigor applied to commercial scale.",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85",
+    image: "/images/typology-commercial.jpg",
   },
   {
     titleEs: "Proyectos especiales",
@@ -36,8 +34,7 @@ const typologies = [
       "Intervenciones urbanas, espacios públicos y encargos que trascienden la tipología convencional. Proyectos donde la arquitectura dialoga con la comunidad.",
     descEn:
       "Urban interventions, public spaces, and commissions that transcend conventional typology. Projects where architecture dialogues with the community.",
-    image:
-      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=900&q=85",
+    image: "/images/typology-special.jpg",
   },
 ];
 
@@ -160,11 +157,14 @@ export default function LaFirmaPage() {
       <section ref={imageStripRef} className="overflow-hidden py-1 bg-carbon">
         <motion.div className="flex gap-1" style={{ x: stripX }}>
           {[
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80",
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80",
-            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80",
-            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80",
-            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80",
+            "/images/projects/casa-descalzo/casa-descalzo-01.jpg",
+            "/images/principle-emotional-brief.jpg",
+            "/images/projects/casa-dosel/casa-dosel-01.jpg",
+            "/images/principle-matter.jpg",
+            "/images/projects/villa-fuste/villa-fuste-01.jpg",
+            "/images/principle-light.jpg",
+            "/images/projects/casa-enso/casa-enso-01.jpg",
+            "/images/principle-dialogue.jpg",
           ].map((src, i) => (
             <div
               key={i}
