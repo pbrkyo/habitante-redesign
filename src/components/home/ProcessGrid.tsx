@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+
+const APPROACH_HREF = "/forma-de-disenar";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 const easeWipe = [0.76, 0, 0.24, 1] as const;
@@ -70,6 +74,7 @@ function BentoTile({
   title,
   desc,
   principleWord,
+  linkLabel,
   reduce,
 }: {
   tile: Tile;
@@ -78,6 +83,7 @@ function BentoTile({
   title: string;
   desc: string;
   principleWord: string;
+  linkLabel: string;
   reduce: boolean | null;
 }) {
   // Phase label arrives as "01 — Escucha"; keep the word after the dash.
@@ -88,7 +94,7 @@ function BentoTile({
       variants={reduce ? undefined : tileVariants}
       whileHover={reduce ? undefined : { y: -8 }}
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
-      className={`group relative overflow-hidden rounded-[3px] ${tile.span} ${tile.minH}`}
+      className={`group relative overflow-hidden rounded-[3px] cursor-pointer ${tile.span} ${tile.minH}`}
     >
       {/* Image with clip-path reveal + Ken-Burns hover zoom */}
       <motion.div
@@ -146,6 +152,18 @@ function BentoTile({
           {desc}
         </p>
       </div>
+
+      {/* Hover affordance */}
+      <span className="pointer-events-none absolute top-6 left-6 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-az-light/40 bg-carbon/30 backdrop-blur-sm text-az-light opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+        <ArrowUpRight size={18} strokeWidth={1.5} />
+      </span>
+
+      {/* Full-tile link */}
+      <Link
+        href={APPROACH_HREF}
+        aria-label={`${title} — ${linkLabel}`}
+        className="absolute inset-0 z-20"
+      />
     </motion.article>
   );
 }
@@ -154,6 +172,7 @@ export default function ProcessGrid() {
   const { t, lang } = useLanguage();
   const reduce = useReducedMotion();
   const principleWord = lang === "es" ? "Principio" : "Principle";
+  const linkLabel = lang === "es" ? "Ver enfoque de diseño" : "View design approach";
 
   return (
     <section className="bg-linen section-pad py-24 max-md:py-16 border-t border-bone/50">
@@ -206,6 +225,7 @@ export default function ProcessGrid() {
             title={t(`${tile.key}.title`)}
             desc={t(`${tile.key}.desc`)}
             principleWord={principleWord}
+            linkLabel={linkLabel}
             reduce={reduce}
           />
         ))}

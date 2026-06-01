@@ -43,7 +43,7 @@ function MagneticButton({ children, href }: { children: React.ReactNode; href: s
       >
         <Link
           href={href}
-          className="inline-block text-sm uppercase tracking-[0.16em] text-carbon bg-cream border-none py-5 px-14 max-md:px-10 rounded-sm transition-colors duration-300 hover:bg-white font-medium"
+          className="inline-block text-sm uppercase tracking-[0.16em] text-white bg-az-brand border-none py-5 px-14 max-md:px-10 rounded-sm transition-colors duration-300 hover:bg-az-deep font-medium"
         >
           {children}
         </Link>
@@ -98,7 +98,7 @@ export default function CTASection() {
           {t("cta.title.1")}
           <br />
           {t("cta.title.2")}
-          <em className="italic text-az-light/80">{t("cta.title.em")}</em>
+          <em className="italic text-[#A8C0E8]">{t("cta.title.em")}</em>
         </motion.h2>
 
         <motion.div
