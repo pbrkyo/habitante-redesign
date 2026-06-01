@@ -6,76 +6,149 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 const easeWipe = [0.76, 0, 0.24, 1] as const;
 
-const principles = [
-  { key: "proc.1", num: "01" },
-  { key: "proc.2", num: "02" },
-  { key: "proc.3", num: "03" },
-  { key: "proc.4", num: "04" },
+type Tone = "brand" | "light" | "cream" | "azlight";
+
+type Tile = {
+  key: string;
+  num: string;
+  tone: Tone;
+  span: string;
+  feature?: boolean;
+};
+
+// Asymmetric bento: feature tile (2×2) top-left, two stacked tiles on the
+// right, one wide band across the bottom.
+const tiles: Tile[] = [
+  {
+    key: "proc.1",
+    num: "01",
+    tone: "brand",
+    feature: true,
+    span: "md:col-span-2 md:row-span-2",
+  },
+  { key: "proc.2", num: "02", tone: "light", span: "md:col-start-3 md:row-start-1" },
+  { key: "proc.3", num: "03", tone: "cream", span: "md:col-start-3 md:row-start-2" },
+  { key: "proc.4", num: "04", tone: "azlight", span: "md:col-span-3 md:row-start-3" },
 ];
 
-function Band({
-  num,
+const toneStyles: Record<
+  Tone,
+  {
+    tile: string;
+    eyebrow: string;
+    ghost: string;
+    tick: string;
+    title: string;
+    desc: string;
+  }
+> = {
+  brand: {
+    tile: "bg-az-brand border border-az-brand",
+    eyebrow: "text-az-light/75",
+    ghost: "text-white/[0.08]",
+    tick: "bg-az-light/60",
+    title: "text-bone",
+    desc: "text-az-light/80",
+  },
+  light: {
+    tile: "bg-white border border-bone/70",
+    eyebrow: "text-az-brand/80",
+    ghost: "text-carbon/[0.04]",
+    tick: "bg-az-brand",
+    title: "text-carbon",
+    desc: "text-ink/75",
+  },
+  cream: {
+    tile: "bg-cream border border-bone/70",
+    eyebrow: "text-az-brand/80",
+    ghost: "text-carbon/[0.04]",
+    tick: "bg-az-brand",
+    title: "text-carbon",
+    desc: "text-ink/75",
+  },
+  azlight: {
+    tile: "bg-az-light border border-az-mid",
+    eyebrow: "text-az-brand/80",
+    ghost: "text-az-brand/[0.07]",
+    tick: "bg-az-brand",
+    title: "text-carbon",
+    desc: "text-ink/75",
+  },
+};
+
+const tileVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.7, ease },
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+function BentoTile({
+  tile,
   phase,
   title,
   desc,
-  index,
   reduce,
 }: {
-  num: string;
+  tile: Tile;
   phase: string;
   title: string;
   desc: string;
-  index: number;
   reduce: boolean | null;
 }) {
-  // The phase label arrives as "01 — Escucha"; keep only the word after the dash.
+  const s = toneStyles[tile.tone];
+  // Phase label arrives as "01 — Escucha"; keep the word after the dash.
   const phaseWord = phase.split("—").pop()?.trim() ?? phase;
 
   return (
     <motion.div
-      className="group relative border-t border-bone/60 last:border-b last:border-bone/60"
-      initial={reduce ? undefined : { opacity: 0, y: 24 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay: index * 0.08, ease }}
+      variants={reduce ? undefined : tileVariants}
+      whileHover={reduce ? undefined : { y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 26 }}
+      className={`group relative overflow-hidden rounded-[3px] flex flex-col ${
+        tile.feature ? "p-9 md:p-11" : "p-7 md:p-8"
+      } ${s.tile} ${tile.span}`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_minmax(0,420px)] gap-x-10 gap-y-4 items-baseline py-10 max-md:py-8 transition-colors duration-500">
-        {/* Numeral */}
-        <span className="font-serif text-2xl md:text-3xl text-az-brand/40 leading-none tabular-nums transition-colors duration-500 group-hover:text-az-brand">
-          {num}
+      {/* Ghost numeral motif */}
+      <span
+        className={`pointer-events-none absolute -top-4 right-1 font-serif leading-none select-none ${
+          tile.feature ? "text-[160px]" : "text-[104px]"
+        } ${s.ghost}`}
+      >
+        {tile.num}
+      </span>
+
+      {/* Eyebrow: number + phase, with a short tick line */}
+      <div className="relative flex items-center gap-3 mb-5">
+        <span className={`h-px w-7 ${s.tick}`} />
+        <span className={`label-upper ${s.eyebrow}`}>
+          {tile.num} · {phaseWord}
         </span>
-
-        {/* Title + phase + sweeping underline */}
-        <div className="min-w-0">
-          <span className="label-upper text-az-brand/80 block mb-3">
-            {phaseWord}
-          </span>
-          <h3 className="font-serif text-display-sm text-carbon leading-[1.1] transition-colors duration-500 group-hover:text-az-brand">
-            {title}
-          </h3>
-          <div className="relative mt-4 h-px w-full max-w-[280px] bg-bone/60 overflow-hidden">
-            <motion.span
-              className="absolute inset-0 bg-az-brand origin-left"
-              initial={reduce ? undefined : { scaleX: 0 }}
-              whileInView={reduce ? undefined : { scaleX: 1 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, delay: 0.25 + index * 0.08, ease: easeWipe }}
-              style={reduce ? { transform: "scaleX(1)" } : undefined}
-            />
-          </div>
-        </div>
-
-        {/* Description */}
-        <motion.p
-          className="body-text text-ink/75 leading-[1.85] md:pt-1"
-          initial={reduce ? undefined : { opacity: 0 }}
-          whileInView={reduce ? undefined : { opacity: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, delay: 0.4 + index * 0.08, ease }}
-        >
-          {desc}
-        </motion.p>
       </div>
+
+      <h3
+        className={`relative font-serif ${
+          tile.feature ? "text-display-md" : "text-display-sm"
+        } leading-[1.15] ${s.title} ${tile.feature ? "mb-5" : "mb-3"}`}
+      >
+        {title}
+      </h3>
+
+      <p
+        className={`relative body-text leading-[1.8] ${s.desc} ${
+          tile.feature ? "max-w-md mt-auto" : ""
+        }`}
+      >
+        {desc}
+      </p>
     </motion.div>
   );
 }
@@ -118,20 +191,25 @@ export default function ProcessGrid() {
         />
       </div>
 
-      {/* Principle bands */}
-      <div>
-        {principles.map((p, i) => (
-          <Band
-            key={p.key}
-            num={p.num}
-            phase={t(`${p.key}.n`)}
-            title={t(`${p.key}.title`)}
-            desc={t(`${p.key}.desc`)}
-            index={i}
+      {/* Bento grid */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-3 gap-3 md:auto-rows-[minmax(190px,1fr)]"
+        variants={reduce ? undefined : containerVariants}
+        initial={reduce ? undefined : "hidden"}
+        whileInView={reduce ? undefined : "visible"}
+        viewport={{ once: true, margin: "-80px" }}
+      >
+        {tiles.map((tile) => (
+          <BentoTile
+            key={tile.key}
+            tile={tile}
+            phase={t(`${tile.key}.n`)}
+            title={t(`${tile.key}.title`)}
+            desc={t(`${tile.key}.desc`)}
             reduce={reduce}
           />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
