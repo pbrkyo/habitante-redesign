@@ -13,41 +13,43 @@ type Tile = {
   image: string;
   span: string;
   minH: string;
-  feature?: boolean;
+  wide?: boolean;
+  objectPosition?: string;
 };
 
-// Asymmetric bento: feature tile (2×2) top-left, two stacked tiles on the
-// right, one wide band across the bottom. Each tile carries its own image so
-// every principle is a protagonist.
+// Balanced zigzag bento: each row pairs one wide + one narrow tile, alternating
+// sides so every principle gets a large, equal-weight showcase.
 const tiles: Tile[] = [
   {
     key: "proc.1",
     num: "01",
     image: "/images/principle-emotional-brief.jpg",
-    feature: true,
-    span: "md:col-span-2 md:row-span-2",
-    minH: "min-h-[440px] md:min-h-0",
+    wide: true,
+    span: "md:col-span-3",
+    minH: "min-h-[360px] md:min-h-0",
   },
   {
     key: "proc.2",
     num: "02",
     image: "/images/principle-light.jpg",
-    span: "md:col-start-3 md:row-start-1",
-    minH: "min-h-[280px] md:min-h-0",
+    span: "md:col-span-2",
+    minH: "min-h-[340px] md:min-h-0",
   },
   {
     key: "proc.3",
     num: "03",
     image: "/images/principle-matter.jpg",
-    span: "md:col-start-3 md:row-start-2",
-    minH: "min-h-[280px] md:min-h-0",
+    span: "md:col-span-2",
+    minH: "min-h-[340px] md:min-h-0",
   },
   {
     key: "proc.4",
     num: "04",
     image: "/images/principle-dialogue.jpg",
-    span: "md:col-span-3 md:row-start-3",
-    minH: "min-h-[320px] md:min-h-0",
+    wide: true,
+    span: "md:col-span-3",
+    minH: "min-h-[360px] md:min-h-0",
+    objectPosition: "center 68%",
   },
 ];
 
@@ -101,8 +103,9 @@ function BentoTile({
             src={tile.image}
             alt={title}
             fill
-            sizes={tile.feature ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+            sizes={tile.wide ? "(max-width: 768px) 100vw, 60vw" : "(max-width: 768px) 100vw, 40vw"}
             className="object-cover"
+            style={tile.objectPosition ? { objectPosition: tile.objectPosition } : undefined}
           />
         </div>
       </motion.div>
@@ -116,18 +119,14 @@ function BentoTile({
       {/* Ghost numeral motif */}
       <div
         className={`pointer-events-none absolute top-5 right-5 font-serif leading-none select-none text-white/[0.1] transition-transform duration-500 group-hover:-translate-y-1 ${
-          tile.feature ? "text-[120px] md:text-[180px]" : "text-[88px]"
+          tile.wide ? "text-[110px] md:text-[150px]" : "text-[96px] md:text-[120px]"
         }`}
       >
         {tile.num}
       </div>
 
       {/* Content */}
-      <div
-        className={`absolute inset-0 flex flex-col justify-end ${
-          tile.feature ? "p-9 md:p-11" : "p-6 md:p-7"
-        }`}
-      >
+      <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-10">
         <div className="flex items-center gap-3 mb-3">
           <span className="h-px w-7 bg-az-light/70" />
           <span className="label-upper text-az-light/90">
@@ -136,20 +135,14 @@ function BentoTile({
         </div>
 
         <h3
-          className={`font-serif text-cream leading-[1.12] ${
-            tile.feature ? "text-display-lg mb-4" : "text-display-sm mb-2.5"
+          className={`font-serif text-cream leading-[1.12] mb-3 ${
+            tile.wide ? "text-display-lg" : "text-display-md"
           }`}
         >
           {title}
         </h3>
 
-        <p
-          className={`text-bone/85 leading-[1.8] ${
-            tile.feature
-              ? "text-[15px] md:text-base max-w-md"
-              : "text-[13px] max-w-sm"
-          }`}
-        >
+        <p className="text-bone/85 leading-[1.8] text-[14px] md:text-[15px] max-w-lg">
           {desc}
         </p>
       </div>
@@ -198,7 +191,7 @@ export default function ProcessGrid() {
 
       {/* Bento grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-3 gap-3 md:auto-rows-[minmax(230px,1fr)]"
+        className="grid grid-cols-1 md:grid-cols-5 gap-3 md:auto-rows-[minmax(380px,1fr)]"
         variants={reduce ? undefined : containerVariants}
         initial={reduce ? undefined : "hidden"}
         whileInView={reduce ? undefined : "visible"}
