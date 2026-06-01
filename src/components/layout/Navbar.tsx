@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const navLinks = [
+  { key: "nav.home", href: "/" },
   { key: "nav.projects", href: "/proyectos" },
   { key: "nav.approach", href: "/forma-de-disenar" },
   { key: "nav.firm", href: "/la-firma" },

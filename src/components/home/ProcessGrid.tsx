@@ -62,6 +62,14 @@ const tileVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
 
+const imageVariants = {
+  hidden: { clipPath: "inset(0 0 100% 0)" },
+  visible: {
+    clipPath: "inset(0 0 0% 0)",
+    transition: { duration: 1, ease: easeWipe },
+  },
+};
+
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.14, delayChildren: 0.1 } },
@@ -69,7 +77,6 @@ const containerVariants = {
 
 function BentoTile({
   tile,
-  index,
   phase,
   title,
   desc,
@@ -78,7 +85,6 @@ function BentoTile({
   reduce,
 }: {
   tile: Tile;
-  index: number;
   phase: string;
   title: string;
   desc: string;
@@ -96,13 +102,10 @@ function BentoTile({
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
       className={`group relative overflow-hidden rounded-[3px] cursor-pointer ${tile.span} ${tile.minH}`}
     >
-      {/* Image with clip-path reveal + Ken-Burns hover zoom */}
+      {/* Image with clip-path reveal (orchestrated by the grid) + Ken-Burns hover zoom */}
       <motion.div
         className="absolute inset-0 overflow-hidden"
-        initial={reduce ? undefined : { clipPath: "inset(0 0 100% 0)" }}
-        whileInView={reduce ? undefined : { clipPath: "inset(0 0 0% 0)" }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1, ease: easeWipe, delay: 0.15 + index * 0.12 }}
+        variants={reduce ? undefined : imageVariants}
       >
         <div className="absolute inset-0 transition-transform duration-[1400ms] ease-out group-hover:scale-[1.07]">
           <Image
@@ -216,11 +219,10 @@ export default function ProcessGrid() {
         whileInView={reduce ? undefined : "visible"}
         viewport={{ once: true, margin: "-80px" }}
       >
-        {tiles.map((tile, i) => (
+        {tiles.map((tile) => (
           <BentoTile
             key={tile.key}
             tile={tile}
-            index={i}
             phase={t(`${tile.key}.n`)}
             title={t(`${tile.key}.title`)}
             desc={t(`${tile.key}.desc`)}
