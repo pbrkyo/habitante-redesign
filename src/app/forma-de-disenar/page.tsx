@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -93,6 +93,111 @@ const process = [
   },
 ];
 
+type Principle = (typeof principles)[number];
+
+/* ─── Horizontal pinned showcase for the 4 principles ───
+   Desktop: the section pins and the panels translate sideways as you scroll
+   down. Mobile / reduced-motion: panels stack vertically (no pinning). */
+function PrinciplesHorizontal({
+  principles,
+  lang,
+}: {
+  principles: Principle[];
+  lang: "es" | "en";
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [horizontal, setHorizontal] = useState(false);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setHorizontal(mq.matches && !reduce);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [reduce]);
+
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Translate the track left by (n-1) viewport widths over the scroll span.
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0vw", `-${(principles.length - 1) * 100}vw`]
+  );
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  return (
+    <section
+      ref={trackRef}
+      className="relative bg-linen"
+      style={{ height: horizontal ? `${principles.length * 100}vh` : undefined }}
+    >
+      <div
+        className={
+          horizontal
+            ? "sticky top-0 h-screen overflow-hidden flex items-center"
+            : ""
+        }
+      >
+        <motion.div
+          className={`flex ${horizontal ? "flex-row h-screen" : "flex-col"}`}
+          style={horizontal ? { x } : undefined}
+        >
+          {principles.map((p) => (
+            <div
+              key={p.n}
+              className={`relative flex-shrink-0 overflow-hidden ${
+                horizontal
+                  ? "w-screen h-screen"
+                  : "w-full h-[80vh] min-h-[460px]"
+              }`}
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url('${p.image}')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-carbon/92 via-carbon/45 to-carbon/10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-carbon/55 via-transparent to-transparent" />
+
+              {/* Ghost number */}
+              <div className="absolute top-10 right-8 md:right-16 font-serif text-[120px] md:text-[220px] text-white/[0.06] leading-none select-none pointer-events-none">
+                {p.n}
+              </div>
+
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 right-0 section-pad pb-16 md:pb-24 max-w-3xl">
+                <div className="label-upper text-az-light/85 mb-4 tracking-[0.2em]">
+                  {lang === "es" ? "Principio" : "Principle"} {p.n}
+                </div>
+                <h3 className="font-serif text-display-md md:text-display-lg text-cream leading-[1.1] mb-5">
+                  {lang === "es" ? p.titleEs : p.titleEn}
+                </h3>
+                <p className="text-[15px] md:text-base text-bone/85 leading-[1.9] max-w-xl">
+                  {lang === "es" ? p.descEs : p.descEn}
+                </p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Horizontal progress bar — only while pinned */}
+        {horizontal && (
+          <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10">
+            <motion.div
+              className="h-full bg-az-light origin-left"
+              style={{ width: progressWidth }}
+            />
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export default function FormaDeDisenarPage() {
   const { lang, t } = useLanguage();
 
@@ -163,95 +268,46 @@ export default function FormaDeDisenarPage() {
         </motion.div>
       </section>
 
-      {/* ─── Principles: alternating image+text rows ─── */}
-      <section className="bg-linen border-t border-bone/50">
-        <div className="section-pad pt-24 pb-4 max-md:pt-16">
-          <div className="flex items-end gap-8 mb-6">
-            <div>
-              <motion.div
-                className="label-upper mb-3"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                {lang === "es" ? "Principios" : "Principles"}
-              </motion.div>
-              <motion.h2
-                className="font-serif text-display-md text-carbon"
-                initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
-                whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: easeWipe, delay: 0.1 }}
-              >
-                {lang === "es"
-                  ? "Lo que guía cada decisión"
-                  : "What guides every decision"}
-              </motion.h2>
-            </div>
+      {/* ─── Principles intro ─── */}
+      <section className="bg-linen border-t border-bone/50 section-pad pt-24 pb-12 max-md:pt-16">
+        <div className="flex items-end gap-8">
+          <div>
             <motion.div
-              className="hidden md:block flex-1 h-px bg-bone/60 mb-2"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
+              className="label-upper mb-3"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.4, ease: easeWipe, delay: 0.3 }}
-              style={{ originX: 0 }}
-            />
-          </div>
-        </div>
-
-        {principles.map((p, i) => {
-          const isEven = i % 2 === 0;
-          return (
-            <div
-              key={p.n}
-              className={`grid grid-cols-1 md:grid-cols-2 min-h-[380px] ${
-                i < principles.length - 1 ? "" : ""
-              }`}
+              transition={{ duration: 0.5 }}
             >
-              {/* Image */}
-              <motion.div
-                className={`relative overflow-hidden min-h-[280px] ${
-                  isEven ? "md:order-1" : "md:order-2"
-                }`}
-                initial={{ opacity: 0, clipPath: isEven ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)" }}
-                whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0%)" }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 1, ease: easeWipe }}
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                  style={{ backgroundImage: `url('${p.image}')` }}
-                />
-              </motion.div>
-
-              {/* Text */}
-              <div
-                className={`flex flex-col justify-center px-14 py-14 max-md:px-6 max-md:py-10 ${
-                  isEven ? "md:order-2 bg-white" : "md:order-1 bg-linen"
-                }`}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                >
-                  <div className="label-upper text-az-brand mb-5 tracking-[0.2em]">
-                    {p.n}
-                  </div>
-                  <h3 className="font-serif text-display-sm text-carbon mb-4">
-                    {lang === "es" ? p.titleEs : p.titleEn}
-                  </h3>
-                  <p className="text-sm text-ink/80 leading-[1.95] max-w-md">
-                    {lang === "es" ? p.descEs : p.descEn}
-                  </p>
-                </motion.div>
-              </div>
-            </div>
-          );
-        })}
+              {lang === "es" ? "Principios" : "Principles"}
+            </motion.div>
+            <motion.h2
+              className="font-serif text-display-md text-carbon"
+              initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
+              whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: easeWipe, delay: 0.1 }}
+            >
+              {lang === "es"
+                ? "Lo que guía cada decisión"
+                : "What guides every decision"}
+            </motion.h2>
+          </div>
+          <motion.div
+            className="hidden md:flex items-center gap-3 label-upper text-sand mb-2 whitespace-nowrap"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <span className="flex-1 h-px bg-bone/60 w-16 inline-block" />
+            {lang === "es" ? "Desplázate para recorrer" : "Scroll to explore"} →
+          </motion.div>
+        </div>
       </section>
+
+      {/* ─── Principles: horizontal pinned showcase ─── */}
+      <PrinciplesHorizontal principles={principles} lang={lang} />
 
       {/* ─── Process: vertical timeline ─── */}
       <section className="bg-white section-pad py-28 max-md:py-16 border-t border-bone/50">
