@@ -1,169 +1,151 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const steps = [
-  {
-    nKey: "proc.1.n",
-    titleKey: "proc.1.title",
-    descKey: "proc.1.desc",
-    image: "/images/projects/casa-descalzo/casa-descalzo-01.jpg",
-  },
-  {
-    nKey: "proc.2.n",
-    titleKey: "proc.2.title",
-    descKey: "proc.2.desc",
-    image: "/images/projects/casa-dosel/casa-dosel-01.jpg",
-  },
-  {
-    nKey: "proc.3.n",
-    titleKey: "proc.3.title",
-    descKey: "proc.3.desc",
-    image: "/images/projects/casa-enso/casa-enso-01.jpg",
-  },
-  {
-    nKey: "proc.4.n",
-    titleKey: "proc.4.title",
-    descKey: "proc.4.desc",
-    image: "/images/projects/villa-fuste/villa-fuste-01.jpg",
-  },
+  { nKey: "proc.1.n", titleKey: "proc.1.title", descKey: "proc.1.desc" },
+  { nKey: "proc.2.n", titleKey: "proc.2.title", descKey: "proc.2.desc" },
+  { nKey: "proc.3.n", titleKey: "proc.3.title", descKey: "proc.3.desc" },
+  { nKey: "proc.4.n", titleKey: "proc.4.title", descKey: "proc.4.desc" },
 ];
 
 const easeWipe = [0.76, 0, 0.24, 1] as const;
 
-export default function ProcessGrid() {
-  const { t, lang } = useLanguage();
-
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [horizontal, setHorizontal] = useState(false);
+/* One principle row — its title sweeps from faint sand to deep carbon as it
+   scrolls through the viewport, echoing the Manifesto quote reveal. */
+function PrincipleRow({
+  number,
+  phase,
+  title,
+  desc,
+}: {
+  number: string;
+  phase: string;
+  title: string;
+  desc: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setHorizontal(mq.matches && !reduce);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, [reduce]);
-
   const { scrollYProgress } = useScroll({
-    target: trackRef,
-    offset: ["start start", "end end"],
+    target: ref,
+    offset: ["start 0.85", "start 0.4"],
   });
 
-  // Translate the track left by (n-1) viewport widths over the scroll span.
-  const x = useTransform(
+  const titleColor = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0vw", `-${(steps.length - 1) * 100}vw`]
+    ["rgb(200,195,188)", "rgb(30,29,26)"]
   );
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const numberColor = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["rgba(27,82,166,0.25)", "rgba(27,82,166,1)"]
+  );
+  const detailOpacity = useTransform(scrollYProgress, [0.2, 1], [0.2, 1]);
 
   return (
-    <>
-      {/* ─── Process intro ─── */}
-      <section className="bg-linen border-t border-bone/50 section-pad pt-24 pb-12 max-md:pt-16">
-        <div className="flex items-end gap-8">
-          <div>
-            <motion.div
-              className="label-upper mb-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              {t("proc.label")}
-            </motion.div>
-            <motion.h2
-              className="font-serif text-display-md text-carbon"
-              initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
-              whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: easeWipe, delay: 0.1 }}
-            >
-              {t("proc.title")}
-            </motion.h2>
-          </div>
+    <div
+      ref={ref}
+      className="group grid grid-cols-1 md:grid-cols-[140px_1fr] gap-x-12 gap-y-4 py-12 md:py-16 border-t border-bone/50 last:border-b last:border-bone/50"
+    >
+      {/* Number + phase */}
+      <div className="flex md:flex-col items-baseline md:items-start gap-3 md:gap-2">
+        <motion.span
+          className="font-serif text-5xl md:text-6xl leading-none tabular-nums"
+          style={reduce ? { color: "rgb(27,82,166)" } : { color: numberColor }}
+        >
+          {number}
+        </motion.span>
+        <motion.span
+          className="label-upper text-az-brand/80"
+          style={reduce ? undefined : { opacity: detailOpacity }}
+        >
+          {phase}
+        </motion.span>
+      </div>
+
+      {/* Title + description */}
+      <div className="max-w-2xl">
+        <motion.h3
+          className="font-serif text-[34px] md:text-display-md leading-[1.1] mb-4"
+          style={reduce ? { color: "rgb(30,29,26)" } : { color: titleColor }}
+        >
+          {title}
+        </motion.h3>
+        <motion.p
+          className="text-[15px] md:text-base text-ink/75 leading-[1.85] max-w-xl"
+          style={reduce ? undefined : { opacity: detailOpacity }}
+        >
+          {desc}
+        </motion.p>
+      </div>
+    </div>
+  );
+}
+
+export default function ProcessGrid() {
+  const { t } = useLanguage();
+
+  return (
+    <section className="bg-linen section-pad py-24 max-md:py-16 border-t border-bone/50 border-b border-bone/50">
+      {/* Intro */}
+      <div className="flex items-end gap-8 mb-16 max-md:mb-10">
+        <div>
           <motion.div
-            className="hidden md:flex items-center gap-3 label-upper text-sand mb-2 whitespace-nowrap"
+            className="label-upper mb-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5 }}
           >
-            <span className="h-px bg-bone/60 w-16 inline-block" />
-            {lang === "es" ? "Desplázate para recorrer" : "Scroll to explore"} →
+            {t("proc.label")}
           </motion.div>
-        </div>
-      </section>
-
-      {/* ─── Process: horizontal pinned showcase ─── */}
-      <section
-        ref={trackRef}
-        className="relative bg-linen"
-        style={{ height: horizontal ? `${steps.length * 100}vh` : undefined }}
-      >
-        <div
-          className={
-            horizontal
-              ? "sticky top-0 h-screen overflow-hidden flex items-center"
-              : ""
-          }
-        >
-          <motion.div
-            className={`flex ${horizontal ? "flex-row h-screen" : "flex-col"}`}
-            style={horizontal ? { x } : undefined}
+          <motion.h2
+            className="font-serif text-display-md text-carbon"
+            initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
+            whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: easeWipe, delay: 0.1 }}
           >
-            {steps.map((step) => (
-              <div
-                key={step.nKey}
-                className={`relative flex-shrink-0 overflow-hidden ${
-                  horizontal
-                    ? "w-screen h-screen"
-                    : "w-full h-[80vh] min-h-[460px]"
-                }`}
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${step.image}')` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-carbon/92 via-carbon/45 to-carbon/10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-carbon/55 via-transparent to-transparent" />
-
-                {/* Ghost number — just the digits, e.g. "01" */}
-                <div className="absolute top-10 right-8 md:right-16 font-serif text-[120px] md:text-[220px] text-white/[0.06] leading-none select-none pointer-events-none">
-                  {t(step.nKey).split(" — ")[0]}
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 section-pad pb-16 md:pb-24 max-w-3xl">
-                  <div className="label-upper text-az-light/85 mb-4 tracking-[0.2em]">
-                    {t(step.nKey)}
-                  </div>
-                  <h3 className="font-serif text-display-md md:text-display-lg text-cream leading-[1.1] mb-5">
-                    {t(step.titleKey)}
-                  </h3>
-                  <p className="text-[15px] md:text-base text-bone/85 leading-[1.9] max-w-xl">
-                    {t(step.descKey)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Horizontal progress bar — only while pinned */}
-          {horizontal && (
-            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10">
-              <motion.div
-                className="h-full bg-az-light origin-left"
-                style={{ width: progressWidth }}
-              />
-            </div>
-          )}
+            {t("proc.title")}
+          </motion.h2>
         </div>
-      </section>
-    </>
+        <motion.div
+          className="hidden md:block flex-1 h-px bg-bone/60 mb-3"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: easeWipe, delay: 0.3 }}
+          style={{ originX: 0 }}
+        />
+      </div>
+
+      {/* Editorial principle list */}
+      <div className="max-w-5xl">
+        {steps.map((step) => {
+          const raw = t(step.nKey);
+          const [number, phase] = raw.includes(" — ")
+            ? raw.split(" — ")
+            : [raw, ""];
+          return (
+            <PrincipleRow
+              key={step.nKey}
+              number={number}
+              phase={phase}
+              title={t(step.titleKey)}
+              desc={t(step.descKey)}
+            />
+          );
+        })}
+      </div>
+    </section>
   );
 }
