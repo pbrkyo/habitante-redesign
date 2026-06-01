@@ -16,8 +16,7 @@ const principles = [
       "Antes de cualquier línea, entendemos quién habitará el espacio. No partimos de un programa arquitectónico — partimos de la vida del cliente: sus hábitos, sus emociones, su forma de habitar el mundo.",
     descEn:
       "Before any line, we understand who will inhabit the space. We don't start from an architectural program — we start from the client's life: their habits, emotions, and way of inhabiting the world.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85",
+    image: "/images/principle-emotional-brief.jpg",
   },
   {
     n: "02",
@@ -27,8 +26,7 @@ const principles = [
       "La luz natural no es ornamento. Es el material más poderoso y más silencioso del diseño. Cada espacio se orienta, se abre o se cierra en función de cómo la luz lo habitará a lo largo del día.",
     descEn:
       "Natural light is not ornament. It is the most powerful and silent material in design. Every space is oriented, opened, or closed based on how light will inhabit it throughout the day.",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=85",
+    image: "/images/principle-light.jpg",
   },
   {
     n: "03",
@@ -38,8 +36,7 @@ const principles = [
       "Madera, piedra, concreto expuesto. Materiales que tienen peso, tacto y envejecen con dignidad. No ocultamos la materia — la celebramos. Cada textura cuenta una historia del lugar.",
     descEn:
       "Wood, stone, exposed concrete. Materials that have weight, touch, and age with dignity. We don't hide matter — we celebrate it. Every texture tells a story of the place.",
-    image:
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=85",
+    image: "/images/principle-matter.jpg",
   },
   {
     n: "04",
@@ -49,8 +46,7 @@ const principles = [
       "Orientación solar, ventilación cruzada, vistas controladas. La arquitectura no se impone al lugar — responde a él. Cada proyecto es una conversación entre el diseño y el sitio.",
     descEn:
       "Solar orientation, cross ventilation, controlled views. Architecture doesn't impose on the place — it responds to it. Every project is a conversation between design and site.",
-    image:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85",
+    image: "/images/principle-dialogue.jpg",
   },
 ];
 

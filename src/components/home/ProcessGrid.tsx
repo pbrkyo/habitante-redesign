@@ -23,8 +23,7 @@ const tiles: Tile[] = [
   {
     key: "proc.1",
     num: "01",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1100&q=85",
+    image: "/images/principle-emotional-brief.jpg",
     feature: true,
     span: "md:col-span-2 md:row-span-2",
     minH: "min-h-[440px] md:min-h-0",
@@ -32,24 +31,21 @@ const tiles: Tile[] = [
   {
     key: "proc.2",
     num: "02",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=85",
+    image: "/images/principle-light.jpg",
     span: "md:col-start-3 md:row-start-1",
     minH: "min-h-[280px] md:min-h-0",
   },
   {
     key: "proc.3",
     num: "03",
-    image:
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=85",
+    image: "/images/principle-matter.jpg",
     span: "md:col-start-3 md:row-start-2",
     minH: "min-h-[280px] md:min-h-0",
   },
   {
     key: "proc.4",
     num: "04",
-    image:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=85",
+    image: "/images/principle-dialogue.jpg",
     span: "md:col-span-3 md:row-start-3",
     minH: "min-h-[320px] md:min-h-0",
   },
