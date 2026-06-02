@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Footer() {
@@ -11,13 +12,14 @@ export default function Footer() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-bone/50">
         {/* Brand */}
         <div>
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="font-sans text-[13px] font-semibold tracking-[0.26em] text-az-brand uppercase">
-              HABITANTE
-            </span>
-            <span className="font-sans text-[11px] font-normal tracking-[0.2em] text-az-brand/75 mt-[4px] uppercase">
-              arquitectura
-            </span>
+          <Link href="/" aria-label="Habitante Arquitectura — Inicio" className="inline-flex">
+            <Image
+              src="/images/logo-habitante.png"
+              alt="Habitante Arquitectura"
+              width={506}
+              height={224}
+              className="h-14 w-auto"
+            />
           </Link>
           <p className="text-[14px] text-ink/80 mt-5 italic leading-[1.7] whitespace-pre-line font-normal">
             {t("ft.tagline")}
