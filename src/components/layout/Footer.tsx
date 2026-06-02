@@ -14,11 +14,11 @@ export default function Footer() {
         <div>
           <Link href="/" aria-label="Habitante Arquitectura — Inicio" className="inline-flex">
             <Image
-              src="/images/logo-habitante.png"
+              src="/images/logo-habitante-horizontal.png"
               alt="Habitante Arquitectura"
-              width={506}
-              height={224}
-              className="h-14 w-auto"
+              width={740}
+              height={175}
+              className="h-12 w-auto"
             />
           </Link>
           <p className="text-[14px] text-ink/80 mt-5 italic leading-[1.7] whitespace-pre-line font-normal">
