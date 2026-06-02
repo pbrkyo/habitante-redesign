@@ -48,7 +48,7 @@ export const translations: Translations = {
     "proc.1.desc":
       "Antes de cualquier línea, entendemos quién habitará el espacio y cómo quiere vivir cada día.",
     "proc.2.n": "02 — Luz",
-    "proc.2.title": "Regulador emocional",
+    "proc.2.title": "La luz como materia",
     "proc.2.desc":
       "La luz natural no es ornamento. Es el material más poderoso y más silencioso del diseño.",
     "proc.3.n": "03 — Materia",
@@ -195,7 +195,7 @@ export const translations: Translations = {
     "proc.1.desc":
       "Before any line, we understand who will inhabit the space and how they want to live each day.",
     "proc.2.n": "02 — Light",
-    "proc.2.title": "Emotional regulator",
+    "proc.2.title": "Light as material",
     "proc.2.desc":
       "Natural light is not ornament. It is the most powerful and silent material in design.",
     "proc.3.n": "03 — Matter",

@@ -50,14 +50,12 @@ export default function Navbar() {
           className="group flex items-center transition-opacity hover:opacity-75"
         >
           <Image
-            src="/images/logo-habitante-horizontal.png"
+            src="/images/logo-habitante-mark.png"
             alt="Habitante Arquitectura"
-            width={740}
+            width={506}
             height={175}
             priority
-            className={`w-auto transition-all duration-300 ${
-              scrolled ? "h-9" : "h-11"
-            }`}
+            className="h-9 w-auto"
           />
         </Link>
 
