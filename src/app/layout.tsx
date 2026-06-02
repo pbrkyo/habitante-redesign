@@ -6,6 +6,8 @@ import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import PageTransition from "@/components/layout/PageTransition";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -146,6 +148,8 @@ export default function RootLayout({
           <Footer />
           <WhatsAppButton />
         </LanguageProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
