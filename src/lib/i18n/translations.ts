@@ -113,7 +113,8 @@ export const translations: Translations = {
     "ft.residential": "Residencial",
     "ft.commercial": "Comercial",
     "ft.conversation": "Conversación",
-    "ft.copyright": "© Habitante Arquitectura 2025",
+    "ft.copyright": "© Habitante Arquitectura 2026",
+    "ft.designedBy": "Diseñado por",
 
     // Projects page
     "projects.title": "Proyectos",
@@ -260,7 +261,8 @@ export const translations: Translations = {
     "ft.residential": "Residential",
     "ft.commercial": "Commercial",
     "ft.conversation": "Conversation",
-    "ft.copyright": "© Habitante Arquitectura 2025",
+    "ft.copyright": "© Habitante Arquitectura 2026",
+    "ft.designedBy": "Designed by",
 
     // Projects page
     "projects.title": "Projects",

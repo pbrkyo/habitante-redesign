@@ -89,7 +89,7 @@ export default function CTASection() {
         </motion.div>
 
         <motion.h2
-          className="font-serif text-display-lg md:text-display-xl text-cream leading-[1.1] mb-4 max-w-3xl"
+          className="font-serif text-display-lg md:text-display-xl text-cream leading-[1.1] pb-[0.18em] mb-4 max-w-3xl"
           initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
           whileInView={{ opacity: 1, clipPath: "inset(0% 0 0 0)" }}
           viewport={{ once: true }}

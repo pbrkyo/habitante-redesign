@@ -121,8 +121,19 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center pt-6 text-sm text-ink/70 tracking-[0.05em]">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 pt-6 text-sm text-ink/70 tracking-[0.05em]">
         <span>{t("ft.copyright")}</span>
+        <span>
+          {t("ft.designedBy")}{" "}
+          <a
+            href="https://kusanagistudio.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink/80 underline underline-offset-2 hover:text-carbon transition-colors"
+          >
+            kusanagistudio.com
+          </a>
+        </span>
       </div>
     </footer>
   );
