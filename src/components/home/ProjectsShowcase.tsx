@@ -14,11 +14,13 @@ function StackingProjectCard({
   index,
   lang,
   categoryLabel,
+  total,
 }: {
   project: (typeof projects)[0];
   index: number;
   lang: "es" | "en";
   categoryLabel: string;
+  total: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -30,13 +32,17 @@ function StackingProjectCard({
   const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.08, 1]);
   const lineWidth = useTransform(scrollYProgress, [0.15, 0.5], ["0%", "100%"]);
 
+  const stickyOffset = index * 24;
+
   return (
     <div
       ref={cardRef}
-      className="h-[92vh] min-h-[580px] max-md:h-[80vh] mb-6 last:mb-0"
+      className="h-[85vh] min-h-[520px] max-md:h-[calc(100svh-60px)]"
+      style={{ marginBottom: index < total - 1 ? "-15vh" : 0 }}
     >
       <div
-        className="sticky top-[80px] overflow-hidden group rounded-sm h-[80vh] min-h-[480px] max-md:h-[70vh]"
+        className="sticky overflow-hidden group rounded-sm h-[75vh] min-h-[460px] max-md:h-[calc(100svh-80px)] max-md:min-h-[400px]"
+        style={{ top: `${80 + stickyOffset}px`, zIndex: index + 1 }}
       >
         <Link href={`/proyectos/${project.slug}`} className="block relative w-full h-full overflow-hidden">
           {/* Image with subtle parallax zoom */}
@@ -169,6 +175,7 @@ export default function ProjectsShowcase() {
             index={i}
             lang={lang}
             categoryLabel={categoryLabels[project.category]?.[lang] ?? project.category}
+            total={showcase.length}
           />
         ))}
       </div>
