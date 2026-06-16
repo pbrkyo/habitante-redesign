@@ -32,17 +32,18 @@ function StackingProjectCard({
   const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.08, 1]);
   const lineWidth = useTransform(scrollYProgress, [0.15, 0.5], ["0%", "100%"]);
 
-  const stickyOffset = index * 24;
-
   return (
     <div
       ref={cardRef}
-      className="h-[85vh] min-h-[520px] max-md:h-[calc(100svh-60px)]"
+      className="h-[85vh] min-h-[520px] max-md:h-[calc(100svh-60px)] [--stack-step:24px] md:[--stack-step:56px]"
       style={{ marginBottom: index < total - 1 ? "-15vh" : 0 }}
     >
       <div
         className="sticky overflow-hidden group rounded-sm h-[75vh] min-h-[460px] max-md:h-[calc(100svh-80px)] max-md:min-h-[400px]"
-        style={{ top: `${80 + stickyOffset}px`, zIndex: index + 1 }}
+        style={{
+          top: `calc(80px + ${index} * var(--stack-step))`,
+          zIndex: index + 1,
+        }}
       >
         <Link href={`/proyectos/${project.slug}`} className="block relative w-full h-full overflow-hidden">
           {/* Image with subtle parallax zoom */}
@@ -57,19 +58,19 @@ function StackingProjectCard({
             />
           </motion.div>
 
-          {/* Gradients for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-carbon/80 via-carbon/30 to-transparent" />
+          {/* Gradients — top-weighted on desktop (titles at top); bottom on mobile */}
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-b from-carbon/90 via-carbon/35 to-transparent" />
+          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-carbon/80 via-carbon/30 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-carbon/40 via-transparent to-transparent" />
 
           {/* Ghost index number */}
-          <div className="absolute top-6 right-8 md:right-12 font-serif text-[100px] md:text-[140px] text-white/[0.05] leading-none select-none pointer-events-none">
+          <div className="absolute bottom-6 right-8 md:bottom-auto md:top-6 md:right-12 font-serif text-[100px] md:text-[140px] text-white/[0.05] leading-none select-none pointer-events-none">
             0{index + 1}
           </div>
 
-          {/* Content — always rendered (no whileInView) so titles show even on
-              overlapped/stacked cards on mobile */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14">
-            <div className="flex items-end justify-between gap-8">
+          {/* Desktop: top-aligned so titles remain visible in stack peek; mobile: bottom */}
+          <div className="absolute inset-x-0 top-0 p-8 md:p-14 md:pt-12 max-md:top-auto max-md:bottom-0">
+            <div className="flex items-start max-md:items-end justify-between gap-8">
               <div className="max-w-2xl">
                 <div className="text-sm tracking-[0.22em] uppercase text-[#8AABDC] mb-3">
                   {categoryLabel} · {project.year}
@@ -83,12 +84,12 @@ function StackingProjectCard({
                   </p>
                 )}
                 <motion.div
-                  className="h-px bg-white/20 mt-5 origin-left"
+                  className="h-px bg-white/20 mt-5 origin-left max-md:hidden"
                   style={{ width: lineWidth }}
                 />
               </div>
 
-              <div className="flex-shrink-0 mb-2 hidden md:block">
+              <div className="flex-shrink-0 mt-1 max-md:mb-2 hidden md:block">
                 <span className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/50 text-lg group-hover:text-white group-hover:border-white/60 group-hover:bg-white/10 transition-all duration-500">
                   →
                 </span>
