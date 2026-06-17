@@ -3,14 +3,19 @@ import nodemailer from "nodemailer";
 
 const PLACEHOLDERS = ["your-email@gmail.com", "your-app-password", ""];
 
+function smtpPass() {
+  return (process.env.SMTP_PASS ?? "").replace(/\s/g, "");
+}
+
 function isConfigured() {
-  const { SMTP_HOST, SMTP_USER, SMTP_PASS } = process.env;
+  const { SMTP_HOST, SMTP_USER } = process.env;
+  const pass = smtpPass();
   return (
     !!SMTP_HOST &&
     !!SMTP_USER &&
-    !!SMTP_PASS &&
+    !!pass &&
     !PLACEHOLDERS.includes(SMTP_USER) &&
-    !PLACEHOLDERS.includes(SMTP_PASS)
+    !PLACEHOLDERS.includes(pass)
   );
 }
 
@@ -48,11 +53,10 @@ export async function POST(req: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port,
-      // Implicit TLS on 465; STARTTLS on 587/25.
       secure: port === 465,
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        pass: smtpPass(),
       },
     });
 
@@ -86,7 +90,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Contact form error:", error);
+    const err = error as Error & { code?: string; response?: string };
+    console.error("Contact form error:", err.message, err.code, err.response);
     return NextResponse.json(
       { error: "Failed to send email" },
       { status: 500 }
